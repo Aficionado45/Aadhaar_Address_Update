@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "895933583232",
+    "firebase_url": "https://aadhar-address-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "aadhar-address",
+    "storage_bucket": "aadhar-address.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895933583232:android:358cc20e38d299886dfb65",
+        "android_client_info": {
+          "package_name": "com.example.aadhaar_address"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895933583232-cu17eaonju8mhgo5dah18hg4rcsj92b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzzUemMNvXpzdVLI1OOwCpKhH627qXImg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895933583232-cu17eaonju8mhgo5dah18hg4rcsj92b1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895933583232:android:35166f60a2873cc56dfb65",
+        "android_client_info": {
+          "package_name": "com.example.aadhar_address"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895933583232-7s2vabgbfijimgc5nroavtnddq07a4v2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aadhar_address",
+            "certificate_hash": "0fd7aa8e153a36fadcb953ce89347d1b48da2bf4"
+          }
+        },
+        {
+          "client_id": "895933583232-cu17eaonju8mhgo5dah18hg4rcsj92b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzzUemMNvXpzdVLI1OOwCpKhH627qXImg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895933583232-cu17eaonju8mhgo5dah18hg4rcsj92b1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

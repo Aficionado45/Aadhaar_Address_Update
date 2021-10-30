@@ -289,18 +289,26 @@ class _userLoginState extends State<userLogin> {
                       fontWeight: FontWeight.bold),
                 ),
                 if (otpmessage != null)
-                  Text(
-                    otpmessage,
-                    style: TextStyle(
-                        color: errorcaptcha ? Colors.red : Colors.white,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Text(
+                        otpmessage,
+                        style: TextStyle(
+                            color: errorcaptcha ? Colors.red : Colors.white,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
+                SizedBox(
+                  height: 15,
+                ),
                 Image(
                   image: AssetImage('images/Progress0.png'),
                   width: MediaQuery.of(context).size.width * 0.67,
                 ),
-                SizedBox(height: 15)
+                SizedBox(height: 40),
               ],
             ),
           ),

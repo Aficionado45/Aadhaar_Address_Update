@@ -33,10 +33,6 @@ Future<void> getFeedback(BuildContext context) {
         decoration: InputDecoration(
           filled: true,
           focusColor: Colors.black,
-          icon: Icon(
-            Icons.help_outline_rounded,
-            color: Color(0xFF143B40),
-          ),
           labelText: 'Feedback/Suggestion/Query',
           labelStyle: TextStyle(
             color: Colors.black,

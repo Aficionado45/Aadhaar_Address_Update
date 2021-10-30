@@ -326,6 +326,9 @@ class _scanDocState extends State<scanDoc> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 60,
+              ),
               Image(
                 image: AssetImage('images/Progress1.png'),
                 width: MediaQuery.of(context).size.width * 0.67,

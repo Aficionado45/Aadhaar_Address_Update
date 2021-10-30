@@ -305,6 +305,9 @@ class _confirmState extends State<confirm> {
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -528,8 +531,8 @@ class _confirmState extends State<confirm> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 12,
-                    )
+                      height: 10,
+                    ),
                   ],
                 ),
               ),

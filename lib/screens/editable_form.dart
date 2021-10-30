@@ -168,8 +168,8 @@ class _editFormState extends State<editForm> {
                                   await getlocation(widget.address);
                               print(_distanceinmeters);
                               setState(() {
-                                state = _distanceinmeters > 300 &&
-                                        _distanceinmeters2 > 300
+                                state = _distanceinmeters > 900 &&
+                                        _distanceinmeters2 > 900
                                     ? AppState.unsuccessful
                                     : AppState.comparedlocation;
                                 editable = false;

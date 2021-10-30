@@ -7,34 +7,30 @@ import 'package:location/location.dart';
 LocationData _currentPosition;
 Location location = Location();
 
-Future<double> getlocation(String address) async {
-  // bool _serviceEnabled;
-  // PermissionStatus _permissionGranted;
-  // _serviceEnabled = await location.serviceEnabled();
-  // if (!_serviceEnabled) {
-  //   _serviceEnabled = await location.requestService();
-  //   if (!_serviceEnabled) {
-  //     return;
-  //   }
-  // }
-  // _permissionGranted = await location.hasPermission();
-  // if (_permissionGranted == PermissionStatus.denied) {
-  //   _permissionGranted = await location.requestPermission();
-  //   if (_permissionGranted != PermissionStatus.granted) {
-  //     return;
-  //   }
-  // }
-  // _currentPosition = await location.getLocation();
-  // var value = await _getCoordsFromAddress(
-  //     _currentPosition.latitude, _currentPosition.longitude, address);
-  // double distance = comparecoordinates(_currentPosition.latitude,
-  //     _currentPosition.longitude, value.latitude, value.longitude);
-  // print(distance);
-  // return distance;
-
-
-  //For testing
-  return 100.00;
+getlocation(String address) async {
+  bool _serviceEnabled;
+  PermissionStatus _permissionGranted;
+  _serviceEnabled = await location.serviceEnabled();
+  if (!_serviceEnabled) {
+    _serviceEnabled = await location.requestService();
+    if (!_serviceEnabled) {
+      return;
+    }
+  }
+  _permissionGranted = await location.hasPermission();
+  if (_permissionGranted == PermissionStatus.denied) {
+    _permissionGranted = await location.requestPermission();
+    if (_permissionGranted != PermissionStatus.granted) {
+      return;
+    }
+  }
+  _currentPosition = await location.getLocation();
+  var value = await _getCoordsFromAddress(
+      _currentPosition.latitude, _currentPosition.longitude, address);
+  double distance = comparecoordinates(_currentPosition.latitude,
+      _currentPosition.longitude, value.latitude, value.longitude);
+  print(distance);
+  return distance;
 }
 
 Future<Coordinates> _getCoordsFromAddress(

@@ -146,7 +146,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                                     await getlocation(widget.address);
                                 print(_distanceinmeters);
                                 setState(() {
-                                  state = _distanceinmeters > 300
+                                  state = _distanceinmeters > 900
                                       ? AppState.unsuccessful
                                       : AppState.comparedlocation;
                                   isAsync = false;

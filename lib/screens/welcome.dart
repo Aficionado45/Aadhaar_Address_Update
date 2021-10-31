@@ -1,3 +1,4 @@
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -25,23 +26,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Center(
                   child: Text('Aadhaar Address App',
                       style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Zen'
-                        // fontFamily: 'Open Sans'
-                      )),
+                          color: Color(0xff333333),
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Zen'
+                          // fontFamily: 'Open Sans'
+                          )),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFF143B40),
+                    color: kButton,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   alignment: FractionalOffset.center,
@@ -54,11 +56,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Text(
                       "Get Started",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: MediaQuery.of(context).size.width/30,
+                          color: kButtonText,
+                          fontSize: MediaQuery.of(context).size.width / 30,
                           fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.bold
-                      ),
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

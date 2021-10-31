@@ -431,7 +431,7 @@ class _confirmState extends State<confirm> {
                             child: Text(
                               "Reset",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xffff9933),
                                 fontSize: 15,
                               ),
                             ),
@@ -442,7 +442,7 @@ class _confirmState extends State<confirm> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
+                            color: Color(0xff333333),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           alignment: FractionalOffset.center,
@@ -499,7 +499,7 @@ class _confirmState extends State<confirm> {
                             child: Text(
                               "Confirm",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xffff9933),
                                 fontSize: 15,
                               ),
                             ),

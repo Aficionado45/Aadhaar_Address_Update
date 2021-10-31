@@ -1,5 +1,6 @@
 import 'package:aadhaar_address/screens/op_login.dart';
 import 'package:aadhaar_address/services/authentication_methods.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -47,18 +48,32 @@ class _opOTPState extends State<opOTP> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 4 / 28),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Verify OTP",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: "Open Sans",
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.all(50),
                 child: OTPTextField(
                   length: 6,
                   width: MediaQuery.of(context).size.width,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Open Sans'),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   fieldWidth: MediaQuery.of(context).size.width / 10,
-                  fieldStyle: FieldStyle.underline,
+                  fieldStyle: FieldStyle.box,
                   onChanged: (pin) {
                     otp = pin;
                     print("Completed: " + pin);
@@ -68,12 +83,13 @@ class _opOTPState extends State<opOTP> {
                     print("Completed: " + pin);
                   },
                   otpFieldStyle: OtpFieldStyle(
-                      borderColor: Colors.grey, focusBorderColor: Colors.black),
+                      borderColor: Color(0xff333333),
+                      focusBorderColor: Color(0xffe06f00)),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF143B40),
+                  color: kButton,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 alignment: FractionalOffset.center,
@@ -110,7 +126,7 @@ class _opOTPState extends State<opOTP> {
                   child: Text(
                     "Enter OTP",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: kButtonText,
                         fontSize: MediaQuery.of(context).size.width / 30,
                         fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold),

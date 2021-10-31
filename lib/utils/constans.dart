@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 TextStyle kHeaderStyle = TextStyle(
     fontSize: 20, fontFamily: "Open Sans", fontWeight: FontWeight.bold);
 TextStyle kSubHeaderStyle = TextStyle(
-    fontSize: 20,
+    fontSize: 15,
     fontFamily: "Open Sans",
-    fontWeight: FontWeight.bold,
-    color: Colors.white);
+    fontWeight: FontWeight.w500,
+    color: Color(0xff333333));
+
+Color kButtonText = Color(0xffff9933);
+Color kButton = Color(0xff333333);

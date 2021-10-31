@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:aadhaar_address/screens/op_otp.dart';
 import 'package:aadhaar_address/services/authentication_methods.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -31,6 +32,7 @@ class _opLoginState extends State<opLogin> {
     try {
       var collectionRef = FirebaseFirestore.instance.collection('operator');
       var doc = await collectionRef.doc(docId).get();
+
       return doc.exists;
     } catch (e) {
       throw e;
@@ -67,7 +69,24 @@ class _opLoginState extends State<opLogin> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 5,
+                    height: MediaQuery.of(context).size.height / 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 3 / 26),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Operator Login",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 15,
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -76,7 +95,7 @@ class _opLoginState extends State<opLogin> {
                     width: MediaQuery.of(context).size.width / 1.3,
                     height: MediaQuery.of(context).size.height / 13.6,
                     child: TextField(
-                      // maxLength: 12,
+                      maxLength: 12,
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -110,8 +129,7 @@ class _opLoginState extends State<opLogin> {
                           borderRadius: BorderRadius.all(Radius.circular(32.0)),
                         ),
                         filled: true,
-                        labelStyle:
-                            TextStyle(color: Colors.black, fontSize: 20),
+                        labelStyle: kSubHeaderStyle,
                         labelText: "Operator Aadhaar Number",
                       ),
                     ),
@@ -119,7 +137,7 @@ class _opLoginState extends State<opLogin> {
                   SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFF143B40),
+                      color: kButton,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     alignment: FractionalOffset.center,
@@ -127,7 +145,7 @@ class _opLoginState extends State<opLogin> {
                     height: 40,
                     child: FlatButton(
                       onPressed: () async {
-                        bool exists = true; //await checkIfDocExists(op_aadhar);
+                        bool exists = await checkIfDocExists(op_aadhar);
                         if (op_aadhar != null &&
                             op_aadhar.length == 12 &&
                             exists) {
@@ -159,8 +177,6 @@ class _opLoginState extends State<opLogin> {
                           opRefId = opRefId.substring(0, 10);
                           // op_aadhar = null;
                           print("Operator Ref ID: $opRefId");
-
-                          // Navigator.pushNamed(context, 'opotp');
                         } else {
                           setState(() {
                             error = true;
@@ -170,7 +186,7 @@ class _opLoginState extends State<opLogin> {
                       child: Text(
                         "Get Captcha",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: kButtonText,
                             fontSize: MediaQuery.of(context).size.width / 30,
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold),
@@ -189,6 +205,7 @@ class _opLoginState extends State<opLogin> {
                           width: MediaQuery.of(context).size.width / 1.3,
                           height: MediaQuery.of(context).size.height / 13.6,
                           child: TextFormField(
+                            maxLength: 6,
                             controller: captchafield,
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             decoration: InputDecoration(
@@ -213,8 +230,7 @@ class _opLoginState extends State<opLogin> {
                                     BorderRadius.all(Radius.circular(32.0)),
                               ),
                               filled: true,
-                              labelStyle:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              labelStyle: kSubHeaderStyle,
                               labelText: "Enter Captcha",
                             ),
                           ),
@@ -222,7 +238,7 @@ class _opLoginState extends State<opLogin> {
                         SizedBox(height: 10),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
+                            color: kButton,
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           alignment: FractionalOffset.center,
@@ -264,7 +280,7 @@ class _opLoginState extends State<opLogin> {
                             child: Text(
                               "Verify Captcha",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: kButtonText,
                                   fontSize:
                                       MediaQuery.of(context).size.width / 35,
                                   fontFamily: 'Open Sans',
@@ -282,16 +298,22 @@ class _opLoginState extends State<opLogin> {
                         fontWeight: FontWeight.bold),
                   ),
                   if (otpmessage != null)
-                    Text(
-                      otpmessage,
-                      style: TextStyle(
-                          color: errorcaptcha ? Colors.red : Colors.white,
-                          fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal:
+                              MediaQuery.of(context).size.width * 3 / 26),
+                      child: Text(
+                        otpmessage,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: errorcaptcha ? Colors.red : Colors.white,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 12,
-                  )
+                  ),
                 ],
               ),
             ),

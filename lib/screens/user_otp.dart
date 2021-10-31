@@ -1,6 +1,7 @@
 import 'package:aadhaar_address/screens/editable_form.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
 import 'package:aadhaar_address/services/authentication_methods.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -77,18 +78,32 @@ class _userOTPState extends State<userOTP> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacer(),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 4 / 28),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Verify OTP",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontFamily: "Open Sans",
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.all(50),
                 child: OTPTextField(
                   length: 6,
                   width: MediaQuery.of(context).size.width,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Open Sans'),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   fieldWidth: MediaQuery.of(context).size.width / 10,
-                  fieldStyle: FieldStyle.underline,
+                  fieldStyle: FieldStyle.box,
                   onChanged: (pin) {
                     if (pin.isNotEmpty) otp = pin;
                     print("Completed: " + pin);
@@ -98,12 +113,13 @@ class _userOTPState extends State<userOTP> {
                     print("Completed: " + pin);
                   },
                   otpFieldStyle: OtpFieldStyle(
-                      borderColor: Colors.grey, focusBorderColor: Colors.black),
+                      borderColor: Color(0xff333333),
+                      focusBorderColor: Color(0xffe06f00)),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF143B40),
+                  color: kButton,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 alignment: FractionalOffset.center,
@@ -161,7 +177,7 @@ class _userOTPState extends State<userOTP> {
                   child: Text(
                     "Enter OTP",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: kButtonText,
                         fontSize: MediaQuery.of(context).size.width / 30,
                         fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold),
@@ -176,13 +192,13 @@ class _userOTPState extends State<userOTP> {
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.bold),
               ),
-              Image(
-                image: AssetImage('images/Progress0.png'),
-                width: MediaQuery.of(context).size.width * 0.67,
+              Padding(
+                padding: EdgeInsets.all(25),
+                child: Image(
+                  image: AssetImage('images/Progress0.png'),
+                  width: MediaQuery.of(context).size.width * 0.67,
+                ),
               ),
-              SizedBox(
-                height: 15,
-              )
             ],
           ),
         ),

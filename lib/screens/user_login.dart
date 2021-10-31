@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:aadhaar_address/screens/user_otp.dart';
 import 'package:aadhaar_address/services/authentication_methods.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypto/crypto.dart';
@@ -88,7 +89,26 @@ class _userLoginState extends State<userLogin> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 20,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 3 / 26),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "User Login",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: "Open Sans",
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 15,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -129,7 +149,7 @@ class _userLoginState extends State<userLogin> {
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       filled: true,
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 20),
+                      labelStyle: kSubHeaderStyle,
                       labelText: "User Aadhaar Number",
                     ),
                   ),
@@ -137,7 +157,7 @@ class _userLoginState extends State<userLogin> {
                 SizedBox(height: 10),
                 Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFF143B40),
+                    color: kButton,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   alignment: FractionalOffset.center,
@@ -162,8 +182,6 @@ class _userLoginState extends State<userLogin> {
                           error = false;
                           isAsync = false;
                         });
-
-                        // Navigator.pushNamed(context, 'userotp', arguments: step);
                       } else {
                         setState(() {
                           error = true;
@@ -174,7 +192,7 @@ class _userLoginState extends State<userLogin> {
                     child: Text(
                       "Get Captcha",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: kButtonText,
                           fontSize: MediaQuery.of(context).size.width / 30,
                           fontFamily: 'Open Sans',
                           fontWeight: FontWeight.bold),
@@ -217,8 +235,7 @@ class _userLoginState extends State<userLogin> {
                                   BorderRadius.all(Radius.circular(32.0)),
                             ),
                             filled: true,
-                            labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 20),
+                            labelStyle: kSubHeaderStyle,
                             labelText: "Enter Captcha",
                           ),
                         ),
@@ -226,7 +243,7 @@ class _userLoginState extends State<userLogin> {
                       SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF143B40),
+                          color: kButton,
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
                         alignment: FractionalOffset.center,
@@ -270,7 +287,7 @@ class _userLoginState extends State<userLogin> {
                           child: Text(
                             "Verify Captcha",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: kButtonText,
                                 fontSize:
                                     MediaQuery.of(context).size.width / 35,
                                 fontFamily: 'Open Sans',
@@ -289,16 +306,16 @@ class _userLoginState extends State<userLogin> {
                       fontWeight: FontWeight.bold),
                 ),
                 if (otpmessage != null)
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(30),
-                      child: Text(
-                        otpmessage,
-                        style: TextStyle(
-                            color: errorcaptcha ? Colors.red : Colors.white,
-                            fontFamily: 'Open Sans',
-                            fontWeight: FontWeight.bold),
-                      ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 3 / 26),
+                    child: Text(
+                      otpmessage,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: errorcaptcha ? Colors.red : Colors.white,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 SizedBox(
@@ -317,7 +334,3 @@ class _userLoginState extends State<userLogin> {
     );
   }
 }
-
-//TODO: Improve UI
-//Error for wrong input format less than 12 digits
-//Auth API integration

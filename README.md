@@ -1,7 +1,7 @@
 # UIDAI Hackathon 2021 Submission
 ---
 
-![Aadhaar Logo](https://i.pinimg.com/originals/aa/34/53/aa34538b884a1103e9cf82bbd52cfad7.jpg)
+![Aadhaar Logo](https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png)
 
 This is the Github repository submission of our team for the UIDAI Hackathon 2021.
 

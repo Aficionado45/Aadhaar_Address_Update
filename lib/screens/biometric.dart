@@ -1,4 +1,3 @@
-import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
@@ -46,7 +45,7 @@ class _biometricState extends State<biometric> {
           IconButton(
             icon: Icon(
               Icons.help_outline_rounded,
-              color: kButton,
+              color: Color(0xFF143B40),
               size: 30,
             ),
             onPressed: () {

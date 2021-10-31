@@ -5,7 +5,6 @@ import 'package:aadhaar_address/screens/confirm_address.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
 import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
-import 'package:aadhaar_address/utils/screen_instructions.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -69,18 +68,8 @@ class _scanDocState extends State<scanDoc> {
           actions: [
             IconButton(
               icon: Icon(
-                Icons.list_alt_rounded,
-                color: kButton,
-                size: 30,
-              ),
-              onPressed: () {
-                scanScreenInstructions(context);
-              },
-            ),
-            IconButton(
-              icon: Icon(
                 Icons.help_outline_rounded,
-                color: kButton,
+                color: Color(0xFF333333),
                 size: 30,
               ),
               onPressed: () {

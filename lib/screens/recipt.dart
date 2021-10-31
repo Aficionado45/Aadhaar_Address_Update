@@ -1,5 +1,6 @@
 import 'package:aadhaar_address/screens/scan.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -58,297 +59,261 @@ class _reciptState extends State<recipt> {
           child: Center(
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(20.0),
                 child: ListView(
                   children: [
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Address Update Receipt",
-                          style: TextStyle(
-                            fontFamily: 'Open Sans',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width / 6),
+                      child: Image(
+                        image: AssetImage('images/Progress5.png'),
+                        // width: MediaQuery.of(context).size.width * 0.67,
+                      ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: MediaQuery.of(context).size.height / 35,
                     ),
-                    Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Text(
-                                  'Transaction ID: $userRefId',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'User Aadhaar: ${info['user_aadhar']}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Operator Aadhaar: xxxxxxxx${info['op_aadhar'].substring(8, 12)}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Date of update: ${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Time: ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Captured Address: $address',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Modified Address: $modifiedAdd',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                            ],
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Address Update \nRecipt",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontFamily: "Open Sans",
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
-                        Container(
-                          child: Column(
-                            children: [
-                              user_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        user_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              Text(
-                                'User',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              operator_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        operator_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Operator',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              document_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        document_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Uploaded\nDocument',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
-                        )
+                        Icon(
+                          Icons.verified,
+                          color: Colors.green,
+                          size: 30,
+                        ),
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: MediaQuery.of(context).size.height / 40,
                     ),
-                    Spacer(),
+                    Divider(),
+                    Container(
+                      child: Text(
+                        'Transaction ID: $userRefId',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Container(
+                      child: Text(
+                        'Date of update: ${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Container(
+                      child: Text(
+                        'Time: ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Text(
+                        'User Aadhaar: ${info['user_aadhar']}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      child: Text(
+                        'Operator Aadhaar: xxxxxxxx${info['op_aadhar'].substring(8, 12)}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            child: Text(
+                              'Captured Address: \n$address',
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.6,
+                          ),
+                          Divider(),
+                          Container(
+                            child: Text(
+                              'Modified Address: \n$modifiedAdd',
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.6,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(children: [
+                          user_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    user_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'User',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ]),
+                        Column(children: [
+                          operator_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    operator_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Operator',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ]),
+                        Column(children: [
+                          document_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    document_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Document',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ]),
+                      ],
+                    ),
+                    Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 4,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () {
-                              //Share Content
-                            },
-                            child: Text(
-                              "Share",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
+                        Material(
+                          elevation: 20,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: kButton,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            alignment: FractionalOffset.center,
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: 40,
+                            child: FlatButton(
+                              onPressed: () async {
+                                await getFeedback(context);
+                              },
+                              child: Text(
+                                "Feedback",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: kButtonText,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 3,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () async {
-                              await getFeedback(context);
-                            },
-                            child: Text(
-                              "Give Feedback",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
+                        Material(
+                          elevation: 20,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xffe06f00),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
                             ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 4,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, 'welcome');
-                            },
-                            child: Text(
-                              "Finish",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
+                            alignment: FractionalOffset.center,
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: 40,
+                            child: FlatButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'welcome');
+                              },
+                              child: Text(
+                                "Finish",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    Spacer(),
-                    Text(
-                      'Error occured while sharing receipt. Try again',
-                      style: TextStyle(
-                          color: error ? Colors.red : Colors.white,
-                          fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Image(
-                      image: AssetImage('images/Progress5.png'),
-                      width: MediaQuery.of(context).size.width * 0.67,
-                    ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 12,
-                    )
+                      height: MediaQuery.of(context).size.height / 40,
+                    ),
                   ],
                 ),
               ),
@@ -359,7 +324,3 @@ class _reciptState extends State<recipt> {
     );
   }
 }
-
-//TODO: Improve UI
-//Implement share and feedback option
-//Clear all existing variables

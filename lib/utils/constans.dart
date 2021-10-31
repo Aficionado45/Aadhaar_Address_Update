@@ -9,5 +9,5 @@ TextStyle kSubHeaderStyle = TextStyle(
     fontWeight: FontWeight.w500,
     color: Color(0xff333333));
 
-Color kButtonText = Color(0xffff9933);
+Color kButtonText = Color(0xffffb973);
 Color kButton = Color(0xff333333);

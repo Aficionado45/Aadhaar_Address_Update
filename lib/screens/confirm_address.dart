@@ -68,6 +68,13 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.all(25),
+                      child: Image(
+                        image: AssetImage('images/Progress2.png'),
+                        width: MediaQuery.of(context).size.width * 0.67,
+                      ),
+                    ),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -148,7 +155,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                         if (state == AppState.free)
                           Container(
                             decoration: BoxDecoration(
-                              color: kButton,
+                              color: Color(0xffe06f00),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                             ),
@@ -173,7 +180,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                               child: Text(
                                 "Get Location",
                                 style: TextStyle(
-                                  color: kButtonText,
+                                  color: Colors.white,
                                   fontSize: 15,
                                 ),
                               ),
@@ -185,7 +192,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: kButton,
+                                color: Color(0xffe06f00),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
@@ -208,7 +215,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                                 child: Text(
                                   "Confirm Address",
                                   style: TextStyle(
-                                    color: kButtonText,
+                                    color: Colors.white,
                                     fontSize: 15,
                                   ),
                                 ),
@@ -250,13 +257,6 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold),
                       ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 20,
-                    ),
-                    Image(
-                      image: AssetImage('images/Progress2.png'),
-                      width: MediaQuery.of(context).size.width * 0.67,
-                    ),
                   ],
                 ),
               ),

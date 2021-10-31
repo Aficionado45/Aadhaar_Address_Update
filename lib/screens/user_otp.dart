@@ -77,6 +77,13 @@ class _userOTPState extends State<userOTP> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Image(
+                  image: AssetImage('images/Progress0.png'),
+                  width: MediaQuery.of(context).size.width * 0.67,
+                ),
+              ),
               Spacer(),
               Padding(
                 padding: EdgeInsets.only(
@@ -188,6 +195,9 @@ class _userOTPState extends State<userOTP> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 100,
+              ),
               Spacer(),
               Text(
                 'Invalid OTP',
@@ -195,13 +205,6 @@ class _userOTPState extends State<userOTP> {
                     color: error ? Colors.red : Colors.white,
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: EdgeInsets.all(25),
-                child: Image(
-                  image: AssetImage('images/Progress0.png'),
-                  width: MediaQuery.of(context).size.width * 0.67,
-                ),
               ),
             ],
           ),

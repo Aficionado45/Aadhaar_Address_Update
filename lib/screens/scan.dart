@@ -84,9 +84,16 @@ class _scanDocState extends State<scanDoc> {
           child: ListView(
             shrinkWrap: true,
             padding: EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: MediaQuery.of(context).size.width / 6),
+                horizontal: MediaQuery.of(context).size.width / 8),
             children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Image(
+                  image: AssetImage('images/Progress1.png'),
+                  width: MediaQuery.of(context).size.width * 0.67,
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height / 30),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -148,7 +155,9 @@ class _scanDocState extends State<scanDoc> {
                                 fontFamily: "Open Sans",
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xff333333))),
-                        Icon(Icons.camera),
+                        Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Icon(Icons.camera)),
                       ],
                     ),
                   ),
@@ -194,44 +203,41 @@ class _scanDocState extends State<scanDoc> {
                   ),
                 ),
               SizedBox(
-                height: 15,
+                height: 20,
               ),
               if (state == AppState.picked || state == AppState.extracted)
-                SizedBox(
-                  height: 20,
-                ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.15),
-                child: Material(
-                  elevation: 20,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: kButton,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    alignment: FractionalOffset.center,
-                    width: MediaQuery.of(context).size.width / 5,
-                    height: 40,
-                    child: FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          isAsync = false;
-                        });
-                        Navigator.pushNamed(context, 'scan');
-                      },
-                      child: Text(
-                        "Capture Again",
-                        style: TextStyle(
-                          color: kButtonText,
-                          fontSize: 15,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.15),
+                  child: Material(
+                    elevation: 20,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kButton,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      alignment: FractionalOffset.center,
+                      width: MediaQuery.of(context).size.width / 5,
+                      height: 40,
+                      child: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            isAsync = false;
+                          });
+                          Navigator.pushNamed(context, 'scan');
+                        },
+                        child: Text(
+                          "Capture Again",
+                          style: TextStyle(
+                            color: kButtonText,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
               SizedBox(
                 height: 15,
               ),
@@ -328,7 +334,7 @@ class _scanDocState extends State<scanDoc> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: kButton,
+                      color: Color(0xffe06f00),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     alignment: FractionalOffset.center,
@@ -359,7 +365,7 @@ class _scanDocState extends State<scanDoc> {
                       child: Text(
                         "Confirm Address and Proceed",
                         style: TextStyle(
-                          color: kButtonText,
+                          color: Colors.white,
                           fontSize: 15,
                         ),
                       ),
@@ -385,10 +391,6 @@ class _scanDocState extends State<scanDoc> {
                 SizedBox(
                   height: 60,
                 ),
-              Image(
-                image: AssetImage('images/Progress1.png'),
-                width: MediaQuery.of(context).size.width * 0.67,
-              ),
             ],
           ),
         ),

@@ -130,8 +130,16 @@ class _confirmState extends State<confirm> {
                 padding: const EdgeInsets.all(25),
                 child: ListView(
                   children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width / 6),
+                      child: Image(
+                        image: AssetImage('images/Progress4.png'),
+                        // width: MediaQuery.of(context).size.width * 0.67,
+                      ),
+                    ),
                     SizedBox(
-                      height: 10,
+                      height: MediaQuery.of(context).size.height / 35,
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
@@ -144,7 +152,7 @@ class _confirmState extends State<confirm> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 20,
+                      height: MediaQuery.of(context).size.height / 30,
                     ),
                     Divider(),
                     Container(
@@ -281,7 +289,7 @@ class _confirmState extends State<confirm> {
                     ),
                     Divider(),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -481,7 +489,7 @@ class _confirmState extends State<confirm> {
                               child: Text(
                                 "Confirm",
                                 style: TextStyle(
-                                  color: Color(0xffff9933),
+                                  color: kButtonText,
                                   fontSize: 15,
                                 ),
                               ),
@@ -507,17 +515,6 @@ class _confirmState extends State<confirm> {
                           color: error_user ? Colors.red : Colors.white,
                           fontFamily: 'Open Sans',
                           fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width / 6),
-                      child: Image(
-                        image: AssetImage('images/Progress4.png'),
-                        // width: MediaQuery.of(context).size.width * 0.67,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
                     ),
                   ],
                 ),

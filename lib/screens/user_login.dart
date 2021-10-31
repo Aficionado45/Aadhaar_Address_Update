@@ -89,8 +89,12 @@ class _userLoginState extends State<userLogin> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 20,
+                Padding(
+                  padding: EdgeInsets.all(25),
+                  child: Image(
+                    image: AssetImage('images/Progress0.png'),
+                    width: MediaQuery.of(context).size.width * 0.67,
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -107,7 +111,7 @@ class _userLoginState extends State<userLogin> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 15,
+                  height: MediaQuery.of(context).size.height / 20,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -330,13 +334,6 @@ class _userLoginState extends State<userLogin> {
                     ),
                   ),
                 Spacer(),
-                Padding(
-                  padding: EdgeInsets.all(25),
-                  child: Image(
-                    image: AssetImage('images/Progress0.png'),
-                    width: MediaQuery.of(context).size.width * 0.67,
-                  ),
-                ),
               ],
             ),
           ),

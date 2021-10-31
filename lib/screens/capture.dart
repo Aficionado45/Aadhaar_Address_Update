@@ -100,9 +100,9 @@ class _captureState extends State<capture> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 7.5),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width / 10),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -115,7 +115,7 @@ class _captureState extends State<capture> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height / 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -127,15 +127,15 @@ class _captureState extends State<capture> {
                                 width: MediaQuery.of(context).size.width / 3,
                                 height: MediaQuery.of(context).size.height / 4,
                                 child: Image(
-                                    image: FileImage(
+                                  image: FileImage(
                                     userImage,
-                                    ),
+                                  ),
                                 ),
-                            )
+                              )
                             : Icon(
                                 Icons.person_outline_rounded,
                                 color: kButton,
-                                size: MediaQuery.of(context).size.height / 4,
+                                size: MediaQuery.of(context).size.height / 6,
                               ),
                         Text(
                           'User',
@@ -147,32 +147,34 @@ class _captureState extends State<capture> {
                           height: 5.0,
                         ),
                         Container(
-                          child: userUploaded ? Icon(
-                            Icons.check,
-                            color: Colors.green,
-                            size: MediaQuery.of(context).size.height / 16,
-                          )
-                          : IconButton(
-                            onPressed: () async {
-                              setState(() {
-                                isAsync = true;
-                              });
-                              final PickedFile newImage =
-                                  await pickImageFromCamera(context);
-                              setState(() {
-                                if (newImage != null) {
-                                  userImage = File(newImage.path);
-                                  userUploaded = true;
-                                }
-                                isAsync = false;
-                              });
-                            },
-                            icon: Icon(
-                              Icons.camera_alt_rounded,
-                              color: kButton,
-                            ),
-                            iconSize: MediaQuery.of(context).size.height / 16,
-                          ),
+                          child: userUploaded
+                              ? Icon(
+                                  Icons.check,
+                                  color: Colors.green,
+                                  size: MediaQuery.of(context).size.height / 16,
+                                )
+                              : IconButton(
+                                  onPressed: () async {
+                                    setState(() {
+                                      isAsync = true;
+                                    });
+                                    final PickedFile newImage =
+                                        await pickImageFromCamera(context);
+                                    setState(() {
+                                      if (newImage != null) {
+                                        userImage = File(newImage.path);
+                                        userUploaded = true;
+                                      }
+                                      isAsync = false;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.camera_alt_rounded,
+                                    color: kButton,
+                                  ),
+                                  iconSize:
+                                      MediaQuery.of(context).size.height / 16,
+                                ),
                         ),
                       ],
                     ),
@@ -190,7 +192,7 @@ class _captureState extends State<capture> {
                               )
                             : Icon(
                                 Icons.person_outline_rounded,
-                                size: MediaQuery.of(context).size.height / 4,
+                                size: MediaQuery.of(context).size.height / 6,
                               ),
                         Text(
                           'Operator',
@@ -202,32 +204,34 @@ class _captureState extends State<capture> {
                           height: 5.0,
                         ),
                         Container(
-                          child: operatorUploaded ? Icon(
-                            Icons.check,
-                            color: Colors.green,
-                            size: MediaQuery.of(context).size.height / 16,
-                          ) :
-                          IconButton(
-                            onPressed: () async {
-                              setState(() {
-                                isAsync = true;
-                              });
-                              final PickedFile newImage =
-                                  await pickImageFromCamera(context);
-                              setState(() {
-                                if (newImage != null) {
-                                  operatorImage = File(newImage.path);
-                                  operatorUploaded = true;
-                                }
-                                isAsync = false;
-                              });
-                            },
-                            icon: Icon(
-                              Icons.camera_alt_rounded,
-                              color: kButton,
-                            ),
-                            iconSize: MediaQuery.of(context).size.height / 16,
-                          ),
+                          child: operatorUploaded
+                              ? Icon(
+                                  Icons.check,
+                                  color: Colors.green,
+                                  size: MediaQuery.of(context).size.height / 16,
+                                )
+                              : IconButton(
+                                  onPressed: () async {
+                                    setState(() {
+                                      isAsync = true;
+                                    });
+                                    final PickedFile newImage =
+                                        await pickImageFromCamera(context);
+                                    setState(() {
+                                      if (newImage != null) {
+                                        operatorImage = File(newImage.path);
+                                        operatorUploaded = true;
+                                      }
+                                      isAsync = false;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.camera_alt_rounded,
+                                    color: kButton,
+                                  ),
+                                  iconSize:
+                                      MediaQuery.of(context).size.height / 16,
+                                ),
                         ),
                       ],
                     ),
@@ -320,14 +324,16 @@ class _captureState extends State<capture> {
                       fontFamily: 'Open Sans',
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10,),
-                Image(
-                  image: AssetImage('images/Progress3.png'),
-                  width: MediaQuery.of(context).size.width * 0.67,
-                ),
                 SizedBox(
-                  height: 15,
-                )
+                  height: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(25),
+                  child: Image(
+                    image: AssetImage('images/Progress3.png'),
+                    width: MediaQuery.of(context).size.width * 0.67,
+                  ),
+                ),
               ],
             ),
           ),

@@ -38,6 +38,7 @@ class _editFormState extends State<editForm> {
   @override
   void initState() {
     addressfield.text = widget.address;
+    modifiedAdd = widget.address;
   }
 
   void updateData() {
@@ -94,6 +95,13 @@ class _editFormState extends State<editForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.all(25),
+                      child: Image(
+                        image: AssetImage('images/Progress2.png'),
+                        width: MediaQuery.of(context).size.width * 0.67,
+                      ),
+                    ),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -105,7 +113,7 @@ class _editFormState extends State<editForm> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 15,
+                      height: MediaQuery.of(context).size.height / 20,
                     ),
                     TextFormField(
                       cursorColor: Colors.black,
@@ -337,16 +345,6 @@ class _editFormState extends State<editForm> {
                               fontFamily: "Open Sans",
                               fontWeight: FontWeight.w600,
                               color: Color(0xff333333))),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 15,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(25),
-                      child: Image(
-                        image: AssetImage('images/Progress2.png'),
-                        width: MediaQuery.of(context).size.width * 0.67,
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -357,9 +355,3 @@ class _editFormState extends State<editForm> {
     );
   }
 }
-
-//TODO: Make editable form with extracted address giving only one top editable field to add house no., flat no. etc
-//Improve UI
-//On pressing proceed check updated address with original address and current GPS location
-//Show Error on failure
-//If passed update the ongoing document step, timestamp and updated_address field

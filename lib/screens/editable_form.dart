@@ -94,14 +94,21 @@ class _editFormState extends State<editForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      "Edit Address And Enter Pincode",
-                      style: kHeaderStyle,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Edit Address And Enter Pincode",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 15,
                     ),
                     TextFormField(
+                      cursorColor: Colors.black,
                       controller: addressfield,
                       readOnly: !editable,
                       minLines: 5,
@@ -112,11 +119,22 @@ class _editFormState extends State<editForm> {
                         setState(() {});
                       },
                       decoration: new InputDecoration(
-                        labelText: "Edit Address",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
-                          borderSide: new BorderSide(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButton),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButtonText),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        filled: true,
+                        focusColor: kButtonText,
+                        labelText: 'Edit Address',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Open Sans',
+                          fontSize: 15,
                         ),
                         //fillColor: Colors.green
                       ),
@@ -132,11 +150,22 @@ class _editFormState extends State<editForm> {
                       },
                       keyboardType: TextInputType.number,
                       decoration: new InputDecoration(
-                        labelText: "Enter PIN Code",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
-                          borderSide: new BorderSide(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButton),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButtonText),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        filled: true,
+                        focusColor: kButtonText,
+                        labelText: 'Enter PIN Code',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Open Sans',
+                          fontSize: 15,
                         ),
                         //fillColor: Colors.green
                       ),
@@ -149,7 +178,7 @@ class _editFormState extends State<editForm> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
+                            color: kButton,
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           alignment: FractionalOffset.center,
@@ -161,15 +190,21 @@ class _editFormState extends State<editForm> {
                                 isAsync = true;
                               });
                               //comparing editable form address with location
-                              _distanceinmeters =
-                                  await getlocation(addressfield.text);
-                              //comparing ocr address with location
-                              _distanceinmeters2 =
-                                  await getlocation(widget.address);
+                              try{
+                                _distanceinmeters =
+                                await getlocation(addressfield.text);
+                                //comparing ocr address with location
+                                _distanceinmeters2 =
+                                await getlocation(widget.address);
+                              }
+                              catch(err){
+                                print(err);
+                              }
+
                               print(_distanceinmeters);
                               setState(() {
-                                state = _distanceinmeters > 900 &&
-                                        _distanceinmeters2 > 900
+                                state = _distanceinmeters > 1000 &&
+                                        _distanceinmeters2 > 1000
                                     ? AppState.unsuccessful
                                     : AppState.comparedlocation;
                                 editable = false;
@@ -179,19 +214,19 @@ class _editFormState extends State<editForm> {
                             child: Text(
                               "Get GPS Location",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: kButtonText,
                                 fontSize: 15,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        // SizedBox(
+                        //   width: 10,
+                        // ),
                         if (state == AppState.comparedlocation)
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xFF143B40),
+                              color: kButton,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                             ),
@@ -209,7 +244,7 @@ class _editFormState extends State<editForm> {
                               child: Text(
                                 "Proceed",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: kButtonText,
                                   fontSize: 15,
                                 ),
                               ),
@@ -217,13 +252,14 @@ class _editFormState extends State<editForm> {
                           ),
                       ],
                     ),
+                    if (state == AppState.comparedlocation)
                     SizedBox(
                       height: 10,
                     ),
                     if (state == AppState.comparedlocation)
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF143B40),
+                          color: kButton,
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
                         alignment: FractionalOffset.center,
@@ -239,12 +275,13 @@ class _editFormState extends State<editForm> {
                           child: Text(
                             "Edit Again",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: kButtonText,
                               fontSize: 15,
                             ),
                           ),
                         ),
                       ),
+                    if (state == AppState.comparedlocation)
                     SizedBox(
                       height: 10,
                     ),
@@ -256,7 +293,7 @@ class _editFormState extends State<editForm> {
                     if (state == AppState.unsuccessful &&
                         _distanceinmeters > 300)
                       Text(
-                        "The Distance between the address you edited in the textfield and the address otained from GPS is more than 300 metres. Reset and try again",
+                        "The Distance between the address you edited in the textfield and the address otained from GPS is more than 1000 metres. Reset and try again",
                         textAlign: TextAlign.center,
                       ),
                     if (state == AppState.unsuccessful &&
@@ -271,7 +308,7 @@ class _editFormState extends State<editForm> {
                         textAlign: TextAlign.center,
                       ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 4.5,
+                      height: MediaQuery.of(context).size.height / 6,
                     ),
                     Image(
                       image: AssetImage('images/Progress2.png'),

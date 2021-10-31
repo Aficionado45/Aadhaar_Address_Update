@@ -1,6 +1,8 @@
 import 'package:aadhaar_address/screens/scan.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
+import 'package:aadhaar_address/utils/validate_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -55,7 +57,9 @@ File operatorImage;
 
 class _captureState extends State<capture> {
   bool userUploaded = false;
+  bool userValidated = false;
   bool operatorUploaded = false;
+  bool operatorValidated = false;
   bool error = false;
   bool isAsync = false;
 
@@ -100,12 +104,18 @@ class _captureState extends State<capture> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                Text(
-                  "Capture User and Operator Images",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Open Sans'),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 7.5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Capture User and Operator Images",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: "Open Sans",
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -116,17 +126,14 @@ class _captureState extends State<capture> {
                     Column(
                       children: [
                         userUploaded
-                            ? Container(
-                                width: MediaQuery.of(context).size.width / 3,
-                                height: MediaQuery.of(context).size.height / 4,
-                                child: Image(
-                                  image: FileImage(
-                                    userImage,
-                                  ),
-                                ),
-                              )
+                            ? Icon(
+                              Icons.person_outline_rounded,
+                              color: userValidated ? Colors.green : Colors.red,
+                              size: MediaQuery.of(context).size.height / 6,
+                            )
                             : Icon(
                                 Icons.person_outline_rounded,
+                                color: kButton,
                                 size: MediaQuery.of(context).size.height / 6,
                               ),
                         Text(
@@ -150,13 +157,22 @@ class _captureState extends State<capture> {
                                 if (newImage != null) {
                                   userImage = File(newImage.path);
                                   userUploaded = true;
+
+                                  // isAsync = false;
                                 }
                                 isAsync = false;
                               });
+                              bool isValid = await validateImage(context);
+                              print(isValid);
+                              if(isValid){
+                                setState(() {
+                                  userValidated=true;
+                                });
+                              };
                             },
                             icon: Icon(
                               Icons.camera_alt_rounded,
-                              color: Color(0xFF143B40),
+                              color: kButton,
                             ),
                             iconSize: MediaQuery.of(context).size.height / 16,
                           ),
@@ -166,19 +182,16 @@ class _captureState extends State<capture> {
                     Column(
                       children: [
                         operatorUploaded
-                            ? Container(
-                                width: MediaQuery.of(context).size.width / 3,
-                                height: MediaQuery.of(context).size.height / 4,
-                                child: Image(
-                                  image: FileImage(
-                                    operatorImage,
-                                  ),
-                                ),
-                              )
+                            ? Icon(
+                          Icons.person_outline_rounded,
+                          color: userValidated ? Colors.green : Colors.red,
+                          size: MediaQuery.of(context).size.height / 6,
+                        )
                             : Icon(
-                                Icons.person_outline_rounded,
-                                size: MediaQuery.of(context).size.height / 6,
-                              ),
+                          Icons.person_outline_rounded,
+                          color: kButton,
+                          size: MediaQuery.of(context).size.height / 6,
+                        ),
                         Text(
                           'Operator',
                           style: TextStyle(
@@ -195,18 +208,20 @@ class _captureState extends State<capture> {
                                 isAsync = true;
                               });
                               final PickedFile newImage =
-                                  await pickImageFromCamera(context);
-                              setState(() {
+                              await pickImageFromCamera(context);
+                              setState(() async{
                                 if (newImage != null) {
                                   operatorImage = File(newImage.path);
                                   operatorUploaded = true;
+                                  operatorValidated = await validateImage(context);
+                                  isAsync = false;
                                 }
-                                isAsync = false;
+
                               });
                             },
                             icon: Icon(
                               Icons.camera_alt_rounded,
-                              color: Color(0xFF143B40),
+                              color: kButton,
                             ),
                             iconSize: MediaQuery.of(context).size.height / 16,
                           ),
@@ -223,7 +238,7 @@ class _captureState extends State<capture> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF143B40),
+                        color: kButton,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       alignment: FractionalOffset.center,
@@ -241,7 +256,7 @@ class _captureState extends State<capture> {
                         child: Text(
                           "Reset",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kButtonText,
                             fontSize: 15,
                           ),
                         ),
@@ -252,7 +267,7 @@ class _captureState extends State<capture> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF143B40),
+                        color: kButton,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       alignment: FractionalOffset.center,
@@ -286,7 +301,7 @@ class _captureState extends State<capture> {
                         child: Text(
                           "Next",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kButtonText,
                             fontSize: 15,
                           ),
                         ),

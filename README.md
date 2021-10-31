@@ -8,7 +8,7 @@ This is the Github repository submission of our team for the UIDAI Hackathon 202
 ---
 ### Necessary Links 🔗
 
-1. [Presentation](https://docs.google.com/presentation/d/1mDFjEW73_xy47-hiOJft26IZKpL1Grir/edit?usp=sharing&ouid=114480749664888085291&rtpof=true&sd=true)
+1. [Presentation](https://docs.google.com/presentation/d/1pbj7PJoXaf8V2HbSzpB7fbIjrGMlS4OX/edit?usp=sharing&ouid=102939839878852438516&rtpof=true&sd=true)
 2. [Video Demonstration](https://www.google.com)
 3. [APK of App](https://www.google.com)
 ---
@@ -76,7 +76,7 @@ git clone https://github.com/Aficionado45/Aadhaar_Address_Update.git
 
 ### Screenshots of Important Screens 📸
 
-| Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS | Face Authentication | Receipt |
+| Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS | Image Capture | Receipt |
 |:--------------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 |![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|![Face Authentication Screenshot](https://i.ibb.co/nRh0ptb/Whats-App-Image-2021-10-31-at-11-09-04-PM.jpg)|![Receipt Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|
 

@@ -285,13 +285,16 @@ class _userLoginState extends State<userLogin> {
                                 if (step == 0) {
                                   addUser(userRefId);
                                 }
+                                else{
+                                  await getData();
+                                }
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => userOTP(
                                         aadharno: user_aadhar,
                                         txnid: responsebody["txnId"],
-                                        step: step),
+                                        step: dbstep),
                                   ),
                                 );
                               }

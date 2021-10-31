@@ -1,4 +1,5 @@
 import 'package:aadhaar_address/screens/editable_form.dart';
+import 'package:aadhaar_address/screens/scan.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
 import 'package:aadhaar_address/services/authentication_methods.dart';
 import 'package:aadhaar_address/utils/constans.dart';
@@ -21,24 +22,36 @@ class userOTP extends StatefulWidget {
   _userOTPState createState() => _userOTPState();
 }
 
+Future<void> getData() async {
+  DocumentSnapshot ds = await FirebaseFirestore.instance
+      .collection('ongoing')
+      .doc(userRefId)
+      .get();
+  dbstep = ds.get('step');
+  dbpin = ds.get('pincode');
+  dbaddress = ds.get('scanned_address');
+  dbmodAdd = ds.get('updated_address');
+
+  if((dbstep == 0) || (dbstep == 1)){
+
+  }
+  if(dbstep == 2){
+    address = dbaddress;
+  }
+}
+
+int dbstep;
+int dbpin;
+String dbaddress;
+String dbmodAdd;
+
 class _userOTPState extends State<userOTP> {
   @override
   String otp;
   bool error = false;
-  int pin;
-  String address;
-  String modAdd;
+
   bool isAsync = false;
 
-  Future<void> getData() async {
-    DocumentSnapshot ds = await FirebaseFirestore.instance
-        .collection('ongoing')
-        .doc(userRefId)
-        .get();
-    pin = ds.get('pincode');
-    address = ds.get('scanned_address');
-    modAdd = ds.get('updated_address');
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,8 +162,8 @@ class _userOTPState extends State<userOTP> {
                           setState(() {
                             isAsync = false;
                           });
-                          Navigator.pushNamed(context, 'scan');
-                          /*switch (widget.step) {
+                          // Navigator.pushNamed(context, 'scan');
+                          switch (widget.step) {
                             case 0:
                               Navigator.pushNamed(context, 'scan');
                               break;
@@ -158,14 +171,14 @@ class _userOTPState extends State<userOTP> {
                               Navigator.pushNamed(context, 'scan');
                               break;
                             case 2:
-                              Navigator.pushNamed(context, 'form');
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => editForm(address: dbaddress,)));
                               break;
                             case 3:
                               Navigator.pushNamed(context, 'capture');
                               break;
                             case 4:
                               Navigator.pushNamed(context, 'confirm');
-                          }*/
+                          }
                         } else {
                           setState(() {
                             error = true;

@@ -127,7 +127,7 @@ class _reciptState extends State<recipt> {
                     Divider(),
                     Container(
                       child: Text(
-                        'User Aadhaar: ${info['user_aadhar']}',
+                        'Resident Aadhaar: ${info['user_aadhar']}',
                         style: TextStyle(
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold),
@@ -197,7 +197,7 @@ class _reciptState extends State<recipt> {
                                   size: MediaQuery.of(context).size.width / 5,
                                 ),
                           Text(
-                            'User',
+                            'Resident',
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'Open Sans',

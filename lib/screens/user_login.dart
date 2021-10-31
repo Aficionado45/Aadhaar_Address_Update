@@ -102,7 +102,7 @@ class _userLoginState extends State<userLogin> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "User Login",
+                      "Resident Login",
                       style: TextStyle(
                           fontSize: 30,
                           fontFamily: "Open Sans",
@@ -154,7 +154,7 @@ class _userLoginState extends State<userLogin> {
                       ),
                       filled: true,
                       labelStyle: kSubHeaderStyle,
-                      labelText: "User Aadhaar Number",
+                      labelText: "Resident Aadhaar Number",
                     ),
                   ),
                 ),

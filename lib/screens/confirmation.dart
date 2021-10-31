@@ -132,7 +132,7 @@ class _confirmState extends State<confirm> {
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width / 6),
+                          horizontal: MediaQuery.of(context).size.width / 8),
                       child: Image(
                         image: AssetImage('images/Progress4.png'),
                         // width: MediaQuery.of(context).size.width * 0.67,
@@ -206,7 +206,7 @@ class _confirmState extends State<confirm> {
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w600),
                           ),
                         ]),
                         Column(children: [
@@ -229,7 +229,7 @@ class _confirmState extends State<confirm> {
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.w500),
+                                fontWeight: FontWeight.w600),
                           ),
                         ]),
                       ],
@@ -245,7 +245,7 @@ class _confirmState extends State<confirm> {
                           ),
                           Container(
                             child: Text(
-                              'Captured Address: \n\n$address',
+                              'Captured Address: \n$address',
                               style: TextStyle(
                                   fontFamily: 'Open Sans',
                                   fontWeight: FontWeight.bold),
@@ -255,7 +255,7 @@ class _confirmState extends State<confirm> {
                           Divider(),
                           Container(
                             child: Text(
-                              'Modified Address: \n\n$modifiedAdd',
+                              'Modified Address: \n$modifiedAdd',
                               style: TextStyle(
                                   fontFamily: 'Open Sans',
                                   fontWeight: FontWeight.bold),
@@ -285,7 +285,7 @@ class _confirmState extends State<confirm> {
                       style: TextStyle(
                           fontSize: 15,
                           fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w600),
                     ),
                     Divider(),
                     SizedBox(
@@ -383,7 +383,7 @@ class _confirmState extends State<confirm> {
                           ),
                           filled: true,
                           labelStyle: kSubHeaderStyle,
-                          labelText: "Confirm User Aadhaar Number",
+                          labelText: "Confirm Resident Aadhaar Number",
                         ),
                       ),
                     ),
@@ -510,7 +510,7 @@ class _confirmState extends State<confirm> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Wrong User Aadhar Number',
+                      'Wrong Resident Aadhar Number',
                       style: TextStyle(
                           color: error_user ? Colors.red : Colors.white,
                           fontFamily: 'Open Sans',

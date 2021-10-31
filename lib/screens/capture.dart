@@ -106,7 +106,7 @@ class _captureState extends State<capture> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Capture User and Operator Images",
+                      "Capture Resident and Operator Images",
                       style: TextStyle(
                           fontSize: 30,
                           fontFamily: "Open Sans",
@@ -138,7 +138,7 @@ class _captureState extends State<capture> {
                                 size: MediaQuery.of(context).size.height / 6,
                               ),
                         Text(
-                          'User',
+                          'Resident',
                           style: TextStyle(
                               fontFamily: 'Open Sans',
                               fontWeight: FontWeight.bold),

@@ -71,7 +71,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                     Padding(
                       padding: EdgeInsets.all(25),
                       child: Image(
-                        image: AssetImage('images/Progress2.png'),
+                        image: AssetImage('images/Progress1.png'),
                         width: MediaQuery.of(context).size.width * 0.67,
                       ),
                     ),

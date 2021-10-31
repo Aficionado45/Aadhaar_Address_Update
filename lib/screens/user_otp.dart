@@ -149,7 +149,8 @@ class _userOTPState extends State<userOTP> {
                           setState(() {
                             isAsync = false;
                           });
-                          switch (widget.step) {
+                          Navigator.pushNamed(context, 'scan');
+                          /*switch (widget.step) {
                             case 0:
                               Navigator.pushNamed(context, 'scan');
                               break;
@@ -157,20 +158,14 @@ class _userOTPState extends State<userOTP> {
                               Navigator.pushNamed(context, 'scan');
                               break;
                             case 2:
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      editForm(address: address),
-                                ),
-                              );
+                              Navigator.pushNamed(context, 'form');
                               break;
                             case 3:
                               Navigator.pushNamed(context, 'capture');
                               break;
                             case 4:
                               Navigator.pushNamed(context, 'confirm');
-                          }
+                          }*/
                         } else {
                           setState(() {
                             error = true;

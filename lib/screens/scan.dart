@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:aadhaar_address/screens/capture.dart';
 import 'package:aadhaar_address/screens/confirm_address.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
@@ -86,10 +87,14 @@ class _scanDocState extends State<scanDoc> {
                 vertical: 20,
                 horizontal: MediaQuery.of(context).size.width / 6),
             children: [
-              Center(
+              Align(
+                alignment: Alignment.centerLeft,
                 child: Text(
                   "Scan Documents",
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: "Open Sans",
+                      fontWeight: FontWeight.w600),
                 ),
               ),
               if (state != AppState.free)
@@ -127,48 +132,51 @@ class _scanDocState extends State<scanDoc> {
                   ),
                 ),
               if (state == AppState.free)
-                Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(10.0),
-                      height: MediaQuery.of(context).size.height / 3,
-                      width: MediaQuery.of(context).size.width,
-                      child: Card(
-                          color: Colors.grey,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Capture and upload a document",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 30)),
-                                Icon(Icons.camera),
-                              ])),
-                    )),
-              if (state == AppState.free)
                 Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF143B40),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  alignment: FractionalOffset.center,
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: 40,
-                  child: FlatButton(
-                    onPressed: () async {
-                      setState(() {
-                        isAsync = true;
-                      });
-                      await getImage();
-                      setState(() {
-                        isAsync = false;
-                      });
-                    },
-                    child: Text(
-                      "Capture Pic",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: MediaQuery.of(context).size.height / 3,
+                  width: MediaQuery.of(context).size.width,
+                  child: Card(
+                      color: Colors.grey,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Capture and upload a document",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 30)),
+                            Icon(Icons.camera),
+                          ])),
+                ),
+              if(state == AppState.free)
+                SizedBox(height: MediaQuery.of(context).size.height / 20,),
+              if (state == AppState.free)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kButton,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    alignment: FractionalOffset.center,
+                    width: MediaQuery.of(context).size.width / 3,
+                    height: 40,
+                    child: FlatButton(
+                      onPressed: () async {
+                        setState(() {
+                          isAsync = true;
+                        });
+                        await getImage();
+                        setState(() {
+                          isAsync = false;
+                        });
+                      },
+                      child: Text(
+                        "Capture Pic",
+                        style: TextStyle(
+                          color: kButtonText,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
@@ -180,26 +188,29 @@ class _scanDocState extends State<scanDoc> {
                 SizedBox(
                   height: 20,
                 ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFF143B40),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                alignment: FractionalOffset.center,
-                width: MediaQuery.of(context).size.width / 5,
-                height: 40,
-                child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      isAsync = false;
-                    });
-                    Navigator.pushNamed(context, 'scan');
-                  },
-                  child: Text(
-                    "Capture Again",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kButton,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  alignment: FractionalOffset.center,
+                  width: MediaQuery.of(context).size.width / 5,
+                  height: 40,
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        isAsync = false;
+                      });
+                      Navigator.pushNamed(context, 'scan');
+                    },
+                    child: Text(
+                      "Capture Again",
+                      style: TextStyle(
+                        color: kButtonText,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
@@ -207,29 +218,32 @@ class _scanDocState extends State<scanDoc> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFF143B40),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                alignment: FractionalOffset.center,
-                width: MediaQuery.of(context).size.width / 5,
-                height: 40,
-                child: FlatButton(
-                  onPressed: () async {
-                    setState(() {
-                      isAsync = true;
-                    });
-                    await cropImage();
-                    setState(() {
-                      isAsync = false;
-                    });
-                  },
-                  child: Text(
-                    "Crop Document",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kButton,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  alignment: FractionalOffset.center,
+                  width: MediaQuery.of(context).size.width / 5,
+                  height: 40,
+                  child: FlatButton(
+                    onPressed: () async {
+                      setState(() {
+                        isAsync = true;
+                      });
+                      await cropImage();
+                      setState(() {
+                        isAsync = false;
+                      });
+                    },
+                    child: Text(
+                      "Crop Document",
+                      style: TextStyle(
+                        color: kButtonText,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
@@ -238,42 +252,50 @@ class _scanDocState extends State<scanDoc> {
                 height: 10,
               ),
               if (state == AppState.picked || state == AppState.extracted)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF143B40),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  alignment: FractionalOffset.center,
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: 40,
-                  child: FlatButton(
-                    onPressed: () async {
-                      setState(() {
-                        state = AppState.cropped;
-                        isAsync = true;
-                      });
-                      await getText();
-                      setState(() {
-                        isAsync = false;
-                      });
-
-                      if (script.text.length == 0)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kButton,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    alignment: FractionalOffset.center,
+                    width: MediaQuery.of(context).size.width / 3,
+                    height: 40,
+                    child: FlatButton(
+                      onPressed: () async {
                         setState(() {
-                          error = true;
+                          state = AppState.cropped;
+                          isAsync = true;
                         });
-                    },
-                    child: Text(
-                      "Extract address",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
+                        try{
+                          await getText();
+                        }
+                        catch(err){
+                          print(err);
+                        }
+                        setState(() {
+                          isAsync = false;
+                        });
+
+                        if (script.text.length == 0)
+                          setState(() {
+                            error = true;
+                          });
+                      },
+                      child: Text(
+                        "Extract address",
+                        style: TextStyle(
+                          color: kButtonText,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              SizedBox(
-                height: 10,
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               if (state == AppState.extracted)
                 Container(
                   decoration: BoxDecoration(
@@ -326,6 +348,7 @@ class _scanDocState extends State<scanDoc> {
                   ),
                 ),
               ),
+              if(error)
               SizedBox(
                 height: 60,
               ),

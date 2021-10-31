@@ -44,7 +44,7 @@ class _reciptState extends State<recipt> {
             IconButton(
               icon: Icon(
                 Icons.help_outline_rounded,
-                color: kButton,
+                color: Color(0xFF143B40),
                 size: 30,
               ),
               onPressed: () {

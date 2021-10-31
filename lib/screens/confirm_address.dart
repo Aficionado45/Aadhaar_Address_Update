@@ -48,7 +48,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
           IconButton(
             icon: Icon(
               Icons.help_outline_rounded,
-              color: Color(0xFF333333),
+              color: kButton,
               size: 30,
             ),
             onPressed: () {

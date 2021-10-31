@@ -45,7 +45,7 @@ Future<void> getFeedback(BuildContext context) {
             ),
             filled: true,
             focusColor: kButtonText,
-            labelText: 'Feedback/Suggestion/Query',
+            labelText: 'Type Here',
             labelStyle: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w600,

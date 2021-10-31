@@ -77,6 +77,13 @@ class _userOTPState extends State<userOTP> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Image(
+                  image: AssetImage('images/Progress0.png'),
+                  width: MediaQuery.of(context).size.width * 0.67,
+                ),
+              ),
               Spacer(),
               Padding(
                 padding: EdgeInsets.only(
@@ -142,7 +149,8 @@ class _userOTPState extends State<userOTP> {
                           setState(() {
                             isAsync = false;
                           });
-                          switch (widget.step) {
+                          Navigator.pushNamed(context, 'scan');
+                          /*switch (widget.step) {
                             case 0:
                               Navigator.pushNamed(context, 'scan');
                               break;
@@ -150,20 +158,14 @@ class _userOTPState extends State<userOTP> {
                               Navigator.pushNamed(context, 'scan');
                               break;
                             case 2:
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      editForm(address: address),
-                                ),
-                              );
+                              Navigator.pushNamed(context, 'form');
                               break;
                             case 3:
                               Navigator.pushNamed(context, 'capture');
                               break;
                             case 4:
                               Navigator.pushNamed(context, 'confirm');
-                          }
+                          }*/
                         } else {
                           setState(() {
                             error = true;
@@ -188,6 +190,9 @@ class _userOTPState extends State<userOTP> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 100,
+              ),
               Spacer(),
               Text(
                 'Invalid OTP',
@@ -195,13 +200,6 @@ class _userOTPState extends State<userOTP> {
                     color: error ? Colors.red : Colors.white,
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: EdgeInsets.all(25),
-                child: Image(
-                  image: AssetImage('images/Progress0.png'),
-                  width: MediaQuery.of(context).size.width * 0.67,
-                ),
               ),
             ],
           ),

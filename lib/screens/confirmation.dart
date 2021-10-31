@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:aadhaar_address/screens/capture.dart';
 import 'package:aadhaar_address/screens/op_login.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +112,7 @@ class _confirmState extends State<confirm> {
             IconButton(
               icon: Icon(
                 Icons.help_outline_rounded,
-                color: Color(0xFF143B40),
+                color: kButton,
                 size: 30,
               ),
               onPressed: () {
@@ -126,185 +127,167 @@ class _confirmState extends State<confirm> {
           child: Center(
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(25),
                 child: ListView(
                   children: [
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Address Update Confirmation",
-                          style: TextStyle(
-                            fontFamily: 'Open Sans',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width / 8),
+                      child: Image(
+                        image: AssetImage('images/Progress4.png'),
+                        // width: MediaQuery.of(context).size.width * 0.67,
+                      ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: MediaQuery.of(context).size.height / 35,
                     ),
-                    Spacer(),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Confirm Address Update",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 30,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Text(
+                        'Transaction ID: $userRefId',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Container(
+                      child: Text(
+                        'Date of update: ${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Container(
+                      child: Text(
+                        'Time: ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}',
+                        style: TextStyle(
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                    ),
+                    Divider(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Text(
-                                  'Transaction ID: $userRefId',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
+                        Column(children: [
+                          user_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    user_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 4,
+                                  height:
+                                      MediaQuery.of(context).size.height / 4,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
                                 ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Date of update: ${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Time: ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Captured Address: $address',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Container(
-                                child: Text(
-                                  'Modified Address: $modifiedAdd',
-                                  style: TextStyle(
-                                      fontFamily: 'Open Sans',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                width: MediaQuery.of(context).size.width * 0.6,
-                              ),
-                            ],
+                          Text(
+                            'User',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
                           ),
-                        ),
-                        Container(
-                          child: Column(
-                            children: [
-                              user_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        user_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              Text(
-                                'User',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              operator_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        operator_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Operator',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              document_image != null
-                                  ? Image(
-                                      image: FileImage(
-                                        document_image,
-                                      ),
-                                      width:
-                                          MediaQuery.of(context).size.width / 5,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5,
-                                    )
-                                  : Icon(
-                                      Icons.downloading_rounded,
-                                      color: Color(0xFF143B40),
-                                      size:
-                                          MediaQuery.of(context).size.width / 5,
-                                    ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Uploaded\nDocument',
-                                style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
+                        ]),
+                        Column(children: [
+                          operator_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    operator_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 4,
+                                  height:
+                                      MediaQuery.of(context).size.height / 4,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Operator',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
                           ),
-                        )
+                        ]),
                       ],
                     ),
+                    Divider(),
+                    Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            child: Text(
+                              'Captured Address: \n$address',
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.6,
+                          ),
+                          Divider(),
+                          Container(
+                            child: Text(
+                              'Modified Address: \n$modifiedAdd',
+                              style: TextStyle(
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            width: MediaQuery.of(context).size.width * 0.6,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+                    document_image != null
+                        ? Image(
+                            image: FileImage(
+                              document_image,
+                            ),
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: MediaQuery.of(context).size.height / 3,
+                          )
+                        : Icon(
+                            Icons.downloading_rounded,
+                            color: kButton,
+                            size: MediaQuery.of(context).size.width / 5,
+                          ),
+                    Text(
+                      'Uploaded\nDocument',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Divider(),
                     SizedBox(
                       height: 20,
                     ),
@@ -315,7 +298,6 @@ class _confirmState extends State<confirm> {
                       width: MediaQuery.of(context).size.width / 1.3,
                       height: MediaQuery.of(context).size.height / 13.6,
                       child: TextField(
-                        // maxLength: 12,
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.start,
                         style: TextStyle(
@@ -352,9 +334,8 @@ class _confirmState extends State<confirm> {
                                 BorderRadius.all(Radius.circular(32.0)),
                           ),
                           filled: true,
-                          labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 20),
-                          labelText: "Confirm Operator Aadhaar Number",
+                          labelStyle: kSubHeaderStyle,
+                          labelText: "Confirm operator Aadhaar Number",
                         ),
                       ),
                     ),
@@ -365,7 +346,6 @@ class _confirmState extends State<confirm> {
                       width: MediaQuery.of(context).size.width / 1.3,
                       height: MediaQuery.of(context).size.height / 13.6,
                       child: TextField(
-                        // maxLength: 12,
                         keyboardType: TextInputType.number,
                         textAlign: TextAlign.start,
                         style: TextStyle(
@@ -402,9 +382,8 @@ class _confirmState extends State<confirm> {
                                 BorderRadius.all(Radius.circular(32.0)),
                           ),
                           filled: true,
-                          labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 20),
-                          labelText: "Confirm User Aadhaar Number",
+                          labelStyle: kSubHeaderStyle,
+                          labelText: "Confirm Resident Aadhaar Number",
                         ),
                       ),
                     ),
@@ -412,27 +391,32 @@ class _confirmState extends State<confirm> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 4,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () {
-                              setState(() {
-                                isAsync = false;
-                              });
-                              Navigator.pushNamed(context, 'scan');
-                              //Delete the current document and start a new one at step 1
-                            },
-                            child: Text(
-                              "Reset",
-                              style: TextStyle(
-                                color: Color(0xffff9933),
-                                fontSize: 15,
+                        Material(
+                          elevation: 20,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: kButton,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            alignment: FractionalOffset.center,
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: 40,
+                            child: FlatButton(
+                              onPressed: () {
+                                setState(() {
+                                  isAsync = false;
+                                });
+                                Navigator.pushNamed(context, 'scan');
+                                //Delete the current document and start a new one at step 1
+                              },
+                              child: Text(
+                                "Reset",
+                                style: TextStyle(
+                                  color: kButtonText,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
@@ -440,67 +424,74 @@ class _confirmState extends State<confirm> {
                         SizedBox(
                           width: 10,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xff333333),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 4,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () {
-                              if (op_aadhar != null && op_aadhar.length == 12) {
-                                var bytes = utf8.encode(op_aadhar);
-                                var digest = sha1.convert(bytes);
-                                opRef = digest.toString();
-                                opRef = opRefId.substring(0, 10);
-                                print("Operator Ref ID: $opRef");
-                                print("Operator Ref ID: $opRefId");
-                              }
-                              if (op_aadhar != null && op_aadhar.length == 12) {
-                                var bytes = utf8.encode(op_aadhar);
-                                var digest = sha1.convert(bytes);
-                                userRef = digest.toString();
-                                userRef = userRefId.substring(0, 10);
-                                print("User Ref ID: $userRef");
-                                print("User Ref ID: $userRefId");
-                              }
+                        Material(
+                          elevation: 20,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xff333333),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            alignment: FractionalOffset.center,
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: 40,
+                            child: FlatButton(
+                              onPressed: () {
+                                if (op_aadhar != null &&
+                                    op_aadhar.length == 12) {
+                                  var bytes = utf8.encode(op_aadhar);
+                                  var digest = sha1.convert(bytes);
+                                  opRef = digest.toString();
+                                  opRef = opRefId.substring(0, 10);
+                                  print("Operator Ref ID: $opRef");
+                                  print("Operator Ref ID: $opRefId");
+                                }
+                                if (op_aadhar != null &&
+                                    op_aadhar.length == 12) {
+                                  var bytes = utf8.encode(op_aadhar);
+                                  var digest = sha1.convert(bytes);
+                                  userRef = digest.toString();
+                                  userRef = userRefId.substring(0, 10);
+                                  print("User Ref ID: $userRef");
+                                  print("User Ref ID: $userRefId");
+                                }
 
-                              if (userRef != userRefId) {
-                                setState(() {
-                                  error_user = true;
-                                  print("error User");
-                                });
-                              }
-                              if (opRef != opRefId) {
-                                setState(() {
-                                  error = true;
-                                  print("error");
-                                });
-                              }
-                              if (userRef == userRefId && opRef == opRefId) {
-                                print("Verified");
-                                update();
-                                setState(() {
-                                  error = false;
-                                  error_user = false;
-                                });
-                                setState(() {
-                                  isAsync = false;
-                                });
-                                Navigator.pushNamed(context, 'recipt',
-                                    arguments: {
-                                      'user_aadhar': user_aadhar,
-                                      'op_aadhar': op_aadhar
-                                    });
-                              }
-                            },
-                            child: Text(
-                              "Confirm",
-                              style: TextStyle(
-                                color: Color(0xffff9933),
-                                fontSize: 15,
+                                if (userRef != userRefId) {
+                                  setState(() {
+                                    error_user = true;
+                                    print("error User");
+                                  });
+                                }
+                                if (opRef != opRefId) {
+                                  setState(() {
+                                    error = true;
+                                    print("error");
+                                  });
+                                }
+                                if (userRef == userRefId && opRef == opRefId) {
+                                  print("Verified");
+                                  update();
+                                  setState(() {
+                                    error = false;
+                                    error_user = false;
+                                  });
+                                  setState(() {
+                                    isAsync = false;
+                                  });
+                                  Navigator.pushNamed(context, 'recipt',
+                                      arguments: {
+                                        'user_aadhar': user_aadhar,
+                                        'op_aadhar': op_aadhar
+                                      });
+                                }
+                              },
+                              child: Text(
+                                "Confirm",
+                                style: TextStyle(
+                                  color: kButtonText,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
@@ -508,6 +499,9 @@ class _confirmState extends State<confirm> {
                       ],
                     ),
                     Spacer(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 30,
+                    ),
                     Text(
                       'Wrong Operator Aadhar Number',
                       style: TextStyle(
@@ -516,22 +510,11 @@ class _confirmState extends State<confirm> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Wrong User Aadhar Number',
+                      'Wrong Resident Aadhar Number',
                       style: TextStyle(
                           color: error_user ? Colors.red : Colors.white,
                           fontFamily: 'Open Sans',
                           fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width / 6),
-                      child: Image(
-                        image: AssetImage('images/Progress4.png'),
-                        // width: MediaQuery.of(context).size.width * 0.67,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
                     ),
                   ],
                 ),

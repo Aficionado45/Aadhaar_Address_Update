@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constans.dart';
 
-Future<bool> validateImage(BuildContext context){
+bool validateImage(BuildContext context){
 
   showDialog(
     context: context,

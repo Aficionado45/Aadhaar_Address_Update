@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
         'recipt': (context) => recipt(),
         'biometric': (context) => biometric(),
       },
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           dividerTheme: DividerThemeData(color: kButton, thickness: 2)),
     );

@@ -183,58 +183,6 @@ class _confirmState extends State<confirm> {
                       width: MediaQuery.of(context).size.width * 0.6,
                     ),
                     Divider(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(children: [
-                          user_image != null
-                              ? Image(
-                                  image: FileImage(
-                                    user_image,
-                                  ),
-                                  width: MediaQuery.of(context).size.width / 4,
-                                  height:
-                                      MediaQuery.of(context).size.height / 4,
-                                )
-                              : Icon(
-                                  Icons.downloading_rounded,
-                                  color: kButton,
-                                  size: MediaQuery.of(context).size.width / 5,
-                                ),
-                          Text(
-                            'User',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                        Column(children: [
-                          operator_image != null
-                              ? Image(
-                                  image: FileImage(
-                                    operator_image,
-                                  ),
-                                  width: MediaQuery.of(context).size.width / 4,
-                                  height:
-                                      MediaQuery.of(context).size.height / 4,
-                                )
-                              : Icon(
-                                  Icons.downloading_rounded,
-                                  color: kButton,
-                                  size: MediaQuery.of(context).size.width / 5,
-                                ),
-                          Text(
-                            'Operator',
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ]),
-                      ],
-                    ),
-                    Divider(),
                     Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -266,26 +214,79 @@ class _confirmState extends State<confirm> {
                       ),
                     ),
                     Divider(),
-                    document_image != null
-                        ? Image(
-                            image: FileImage(
-                              document_image,
-                            ),
-                            width: MediaQuery.of(context).size.width / 3,
-                            height: MediaQuery.of(context).size.height / 3,
-                          )
-                        : Icon(
-                            Icons.downloading_rounded,
-                            color: kButton,
-                            size: MediaQuery.of(context).size.width / 5,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(children: [
+                          user_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    user_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Resident',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
                           ),
-                    Text(
-                      'Uploaded\nDocument',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Open Sans',
-                          fontWeight: FontWeight.w600),
+                        ]),
+                        Column(children: [
+                          operator_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    operator_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Operator',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ]),
+                        Column(children: [
+                          document_image != null
+                              ? Image(
+                                  image: FileImage(
+                                    document_image,
+                                  ),
+                                  width: MediaQuery.of(context).size.width / 5,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                )
+                              : Icon(
+                                  Icons.downloading_rounded,
+                                  color: kButton,
+                                  size: MediaQuery.of(context).size.width / 5,
+                                ),
+                          Text(
+                            'Document',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ]),
+                      ],
                     ),
                     Divider(),
                     SizedBox(

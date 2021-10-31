@@ -62,47 +62,55 @@ Future<void> getFeedback(BuildContext context) {
         ),
       ),
       actions: [
-        Container(
-          decoration: BoxDecoration(
-            color: kButton,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          alignment: FractionalOffset.center,
-          width: MediaQuery.of(context).size.width / 5,
-          height: 40,
-          child: FlatButton(
-            child: Text(
-              'Cancel',
-              style: TextStyle(
-                  color: kButtonText, fontFamily: 'Open Sans', fontSize: 12),
+        Material(
+          elevation: 20,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          child: Container(
+            decoration: BoxDecoration(
+              color: kButton,
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+            alignment: FractionalOffset.center,
+            width: MediaQuery.of(context).size.width / 5,
+            height: 40,
+            child: FlatButton(
+              child: Text(
+                'Cancel',
+                style: TextStyle(
+                    color: kButtonText, fontFamily: 'Open Sans', fontSize: 12),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: kButton,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          alignment: FractionalOffset.center,
-          width: MediaQuery.of(context).size.width / 5,
-          height: 40,
-          child: FlatButton(
-            child: Text(
-              'Submit',
-              style: TextStyle(
-                  fontFamily: 'Open Sans', color: kButtonText, fontSize: 12),
+        Material(
+          elevation: 20,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          child: Container(
+            decoration: BoxDecoration(
+              color: kButton,
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-            onPressed: () async {
-              if (feedback != '') {
-                await submitFeedback(feedback);
-              }
-              Navigator.pop(context);
-            },
+            alignment: FractionalOffset.center,
+            width: MediaQuery.of(context).size.width / 5,
+            height: 40,
+            child: FlatButton(
+              child: Text(
+                'Submit',
+                style: TextStyle(
+                    fontFamily: 'Open Sans', color: kButtonText, fontSize: 12),
+              ),
+              onPressed: () async {
+                if (feedback != '') {
+                  await submitFeedback(feedback);
+                }
+                Navigator.pop(context);
+              },
+            ),
           ),
-        )
+        ),
       ],
     ),
   );

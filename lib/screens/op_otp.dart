@@ -87,49 +87,53 @@ class _opOTPState extends State<opOTP> {
                       focusBorderColor: Color(0xffe06f00)),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: kButton,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                alignment: FractionalOffset.center,
-                width: MediaQuery.of(context).size.width / 3.0,
-                height: 40,
-                child: FlatButton(
-                  onPressed: () async {
-                    if (otp.isNotEmpty) {
-                      setState(() {
-                        error = false;
-                        isAsync = true;
-                      });
-                      bool isValidated =
-                          await validateOTP(widget.aadharno, otp, widget.txnid);
-                      print(isValidated);
-                      if (isValidated) {
+              Material(
+                elevation: 20,
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kButton,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  alignment: FractionalOffset.center,
+                  width: MediaQuery.of(context).size.width / 3.0,
+                  height: 40,
+                  child: FlatButton(
+                    onPressed: () async {
+                      if (otp.isNotEmpty) {
                         setState(() {
-                          isAsync = false;
+                          error = false;
+                          isAsync = true;
                         });
-                        Navigator.pushNamed(context, 'userlogin');
+                        bool isValidated = await validateOTP(
+                            widget.aadharno, otp, widget.txnid);
+                        print(isValidated);
+                        if (isValidated) {
+                          setState(() {
+                            isAsync = false;
+                          });
+                          Navigator.pushNamed(context, 'userlogin');
+                        } else {
+                          setState(() {
+                            error = true;
+                            isAsync = false;
+                          });
+                        }
                       } else {
                         setState(() {
                           error = true;
                           isAsync = false;
                         });
                       }
-                    } else {
-                      setState(() {
-                        error = true;
-                        isAsync = false;
-                      });
-                    }
-                  },
-                  child: Text(
-                    "Enter OTP",
-                    style: TextStyle(
-                        color: kButtonText,
-                        fontSize: MediaQuery.of(context).size.width / 30,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold),
+                    },
+                    child: Text(
+                      "Enter OTP",
+                      style: TextStyle(
+                          color: kButtonText,
+                          fontSize: MediaQuery.of(context).size.width / 30,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),

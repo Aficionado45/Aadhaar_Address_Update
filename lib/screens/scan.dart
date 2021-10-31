@@ -69,7 +69,7 @@ class _scanDocState extends State<scanDoc> {
             IconButton(
               icon: Icon(
                 Icons.help_outline_rounded,
-                color: Color(0xFF143B40),
+                color: Color(0xFF333333),
                 size: 30,
               ),
               onPressed: () {
@@ -134,126 +134,198 @@ class _scanDocState extends State<scanDoc> {
               if (state == AppState.free)
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height / 3.5,
                   width: MediaQuery.of(context).size.width,
-                  child: Card(
-                      color: Colors.grey,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Capture and upload a document",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 30)),
-                            Icon(Icons.camera),
-                          ])),
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Capture and upload a document",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: "Open Sans",
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff333333))),
+                        Icon(Icons.camera),
+                      ],
+                    ),
+                  ),
                 ),
-              if(state == AppState.free)
-                SizedBox(height: MediaQuery.of(context).size.height / 20,),
+              if (state == AppState.free)
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 40,
+                ),
               if (state == AppState.free)
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: kButton,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    alignment: FractionalOffset.center,
-                    width: MediaQuery.of(context).size.width / 3,
-                    height: 40,
-                    child: FlatButton(
-                      onPressed: () async {
-                        setState(() {
-                          isAsync = true;
-                        });
-                        await getImage();
-                        setState(() {
-                          isAsync = false;
-                        });
-                      },
-                      child: Text(
-                        "Capture Pic",
-                        style: TextStyle(
-                          color: kButtonText,
-                          fontSize: 15,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.15),
+                  child: Material(
+                    elevation: 20,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kButton,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      alignment: FractionalOffset.center,
+                      width: MediaQuery.of(context).size.width / 3,
+                      height: 40,
+                      child: FlatButton(
+                        onPressed: () async {
+                          setState(() {
+                            isAsync = true;
+                          });
+                          await getImage();
+                          setState(() {
+                            isAsync = false;
+                          });
+                        },
+                        child: Text(
+                          "Scan Document",
+                          style: TextStyle(
+                            color: kButtonText,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
               SizedBox(
-                height: 10,
+                height: 15,
               ),
               if (state == AppState.picked || state == AppState.extracted)
                 SizedBox(
                   height: 20,
                 ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kButton,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  alignment: FractionalOffset.center,
-                  width: MediaQuery.of(context).size.width / 5,
-                  height: 40,
-                  child: FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        isAsync = false;
-                      });
-                      Navigator.pushNamed(context, 'scan');
-                    },
-                    child: Text(
-                      "Capture Again",
-                      style: TextStyle(
-                        color: kButtonText,
-                        fontSize: 15,
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.15),
+                child: Material(
+                  elevation: 20,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kButton,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    alignment: FractionalOffset.center,
+                    width: MediaQuery.of(context).size.width / 5,
+                    height: 40,
+                    child: FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          isAsync = false;
+                        });
+                        Navigator.pushNamed(context, 'scan');
+                      },
+                      child: Text(
+                        "Capture Again",
+                        style: TextStyle(
+                          color: kButtonText,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 15,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kButton,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  alignment: FractionalOffset.center,
-                  width: MediaQuery.of(context).size.width / 5,
-                  height: 40,
-                  child: FlatButton(
-                    onPressed: () async {
-                      setState(() {
-                        isAsync = true;
-                      });
-                      await cropImage();
-                      setState(() {
-                        isAsync = false;
-                      });
-                    },
-                    child: Text(
-                      "Crop Document",
-                      style: TextStyle(
-                        color: kButtonText,
-                        fontSize: 15,
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.15),
+                child: Material(
+                  elevation: 20,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: kButton,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    alignment: FractionalOffset.center,
+                    width: MediaQuery.of(context).size.width / 5,
+                    height: 40,
+                    child: FlatButton(
+                      onPressed: () async {
+                        setState(() {
+                          isAsync = true;
+                        });
+                        await cropImage();
+                        setState(() {
+                          isAsync = false;
+                        });
+                      },
+                      child: Text(
+                        "Crop Document",
+                        style: TextStyle(
+                          color: kButtonText,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 15,
               ),
               if (state == AppState.picked || state == AppState.extracted)
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.15),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.15),
+                  child: Material(
+                    elevation: 20,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kButton,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      alignment: FractionalOffset.center,
+                      width: MediaQuery.of(context).size.width / 3,
+                      height: 40,
+                      child: FlatButton(
+                        onPressed: () async {
+                          setState(() {
+                            state = AppState.cropped;
+                            isAsync = true;
+                          });
+                          try {
+                            await getText();
+                          } catch (err) {
+                            print(err);
+                          }
+                          setState(() {
+                            isAsync = false;
+                          });
+
+                          if (script.text.length == 0)
+                            setState(() {
+                              error = true;
+                            });
+                        },
+                        child: Text(
+                          "Extract address",
+                          style: TextStyle(
+                            color: kButtonText,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              SizedBox(
+                height: 15,
+              ),
+              if (state == AppState.extracted)
+                Material(
+                  elevation: 20,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                   child: Container(
                     decoration: BoxDecoration(
                       color: kButton,
@@ -265,26 +337,27 @@ class _scanDocState extends State<scanDoc> {
                     child: FlatButton(
                       onPressed: () async {
                         setState(() {
-                          state = AppState.cropped;
                           isAsync = true;
                         });
-                        try{
-                          await getText();
-                        }
-                        catch(err){
-                          print(err);
-                        }
+                        //Line is commented out for testing
+                        await uploadImage(
+                            _initialImage, '$userRefId/document.png');
+                        updateData();
                         setState(() {
                           isAsync = false;
                         });
-
-                        if (script.text.length == 0)
-                          setState(() {
-                            error = true;
-                          });
+                        Navigator.push(
+                          context,
+                          //AS A PARAMTER SEND UR ADDRESS for testing, ELSE we will have to send the extracted address i.e script.text
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                cnfrmAddress(address: script.text),
+                          ),
+                        );
+                        // "34AROY M.C LAHIRI STREET ganesh apart ment, Chatra, Serampore, West Bengal 712204, India",
                       },
                       child: Text(
-                        "Extract address",
+                        "Confirm Address and Proceed",
                         style: TextStyle(
                           color: kButtonText,
                           fontSize: 15,
@@ -293,49 +366,9 @@ class _scanDocState extends State<scanDoc> {
                     ),
                   ),
                 ),
-              // SizedBox(
-              //   height: 10,
-              // ),
-              if (state == AppState.extracted)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF143B40),
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  alignment: FractionalOffset.center,
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: 40,
-                  child: FlatButton(
-                    onPressed: () async {
-                      setState(() {
-                        isAsync = true;
-                      });
-                      //Line is commented out for testing
-                      await uploadImage(
-                          _initialImage, '$userRefId/document.png');
-                      updateData();
-                      setState(() {
-                        isAsync = false;
-                      });
-                      Navigator.push(
-                        context,
-                        //AS A PARAMTER SEND UR ADDRESS for testing, ELSE we will have to send the extracted address i.e script.text
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              cnfrmAddress(address: script.text),
-                        ),
-                      );
-                      // "34AROY M.C LAHIRI STREET ganesh apart ment, Chatra, Serampore, West Bengal 712204, India",
-                    },
-                    child: Text(
-                      "Confirm Address and Proceed",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 20,
+              ),
               Center(
                 child: Padding(
                   padding: EdgeInsets.all(10),
@@ -348,10 +381,10 @@ class _scanDocState extends State<scanDoc> {
                   ),
                 ),
               ),
-              if(error)
-              SizedBox(
-                height: 60,
-              ),
+              if (error)
+                SizedBox(
+                  height: 60,
+                ),
               Image(
                 image: AssetImage('images/Progress1.png'),
                 width: MediaQuery.of(context).size.width * 0.67,

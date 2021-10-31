@@ -224,32 +224,36 @@ class _editFormState extends State<editForm> {
                             ),
                           ),
                         ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
+                        SizedBox(
+                          width: 10,
+                        ),
                         if (state == AppState.comparedlocation)
-                          Container(
-                            decoration: BoxDecoration(
-                              color: kButton,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                            ),
-                            alignment: FractionalOffset.center,
-                            width: MediaQuery.of(context).size.width / 2.5,
-                            height: 40,
-                            child: FlatButton(
-                              onPressed: () {
-                                setState(() {
-                                  isAsync = false;
-                                });
-                                updateData();
-                                Navigator.pushNamed(context, 'capture');
-                              },
-                              child: Text(
-                                "Proceed",
-                                style: TextStyle(
-                                  color: kButtonText,
-                                  fontSize: 15,
+                          Material(
+                            elevation: 20,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: kButton,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              alignment: FractionalOffset.center,
+                              width: MediaQuery.of(context).size.width / 2.5,
+                              height: 40,
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isAsync = false;
+                                  });
+                                  updateData();
+                                  Navigator.pushNamed(context, 'capture');
+                                },
+                                child: Text(
+                                  "Proceed",
+                                  style: TextStyle(
+                                    color: kButtonText,
+                                    fontSize: 15,
+                                  ),
                                 ),
                               ),
                             ),
@@ -261,58 +265,80 @@ class _editFormState extends State<editForm> {
                         height: 10,
                       ),
                     if (state == AppState.comparedlocation)
-                      Container(
-                        decoration: BoxDecoration(
-                          color: kButton,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        alignment: FractionalOffset.center,
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: 40,
-                        child: FlatButton(
-                          onPressed: () {
-                            setState(() {
-                              state = AppState.free;
-                              editable = true;
-                            });
-                          },
-                          child: Text(
-                            "Edit Again",
-                            style: TextStyle(
-                              color: kButtonText,
-                              fontSize: 15,
+                      Material(
+                        elevation: 20,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: kButton,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          alignment: FractionalOffset.center,
+                          width: MediaQuery.of(context).size.width / 2.5,
+                          height: 40,
+                          child: FlatButton(
+                            onPressed: () {
+                              setState(() {
+                                state = AppState.free;
+                                editable = true;
+                              });
+                            },
+                            child: Text(
+                              "Edit Again",
+                              style: TextStyle(
+                                color: kButtonText,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     if (state == AppState.comparedlocation)
                       SizedBox(
-                        height: 10,
+                        height: 15,
                       ),
                     if (_distanceinmeters != null)
-                      Text(
-                        "Discrepancy: $_distanceinmeters meters",
-                        textAlign: TextAlign.center,
-                      ),
+                      Text("Discrepancy: $_distanceinmeters meters",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "Open Sans",
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red)),
+                    SizedBox(
+                      height: 10,
+                    ),
                     if (state == AppState.unsuccessful &&
-                        _distanceinmeters > 300)
+                        _distanceinmeters > 900)
                       Text(
-                        "The Distance between the address you edited in the textfield and the address otained from GPS is more than 1000 metres. Reset and try again",
-                        textAlign: TextAlign.center,
-                      ),
+                          "The Distance between the address you edited in the textfield and the address otained from GPS is more than 1000 metres. Reset and try again",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "Open Sans",
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red)),
                     if (state == AppState.unsuccessful &&
-                        _distanceinmeters2 > 300)
+                        _distanceinmeters2 > 900)
                       Text(
-                        "The Distance between the address received from OCR extraction and the address otained from GPS is more than 300 metres. Reset and try again",
-                        textAlign: TextAlign.center,
-                      ),
+                          "The Distance between the address received from OCR extraction and the address otained from GPS is more than 300 metres. Reset and try again",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "Open Sans",
+                              fontWeight: FontWeight.w600,
+                              color: Colors.red)),
                     if (state == AppState.comparedlocation)
                       Text(
-                        "Location verified using GPS. Now you can confirm the address and proceed",
-                        textAlign: TextAlign.center,
-                      ),
+                          "Location verified using GPS. Now you can confirm the address and proceed",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "Open Sans",
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff333333))),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 5,
+                      height: MediaQuery.of(context).size.height / 15,
                     ),
                     Padding(
                       padding: EdgeInsets.all(25),

@@ -48,7 +48,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
           IconButton(
             icon: Icon(
               Icons.help_outline_rounded,
-              color: Color(0xFF143B40),
+              color: Color(0xFF333333),
               size: 30,
             ),
             onPressed: () {
@@ -63,20 +63,20 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(30),
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                        child: Text(
-                            "Confirm Address With Current GPS Location",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: "Open Sans",
-                              fontWeight: FontWeight.w600),
-                        ),
+                      child: Text(
+                        "Confirm Address With Current GPS Location",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: "Open Sans",
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 15,
@@ -180,41 +180,45 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                             ),
                           ),
                         if (state == AppState.comparedlocation)
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xFF143B40),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                            ),
-                            alignment: FractionalOffset.center,
-                            width: MediaQuery.of(context).size.width / 2.5,
-                            height: 40,
-                            child: FlatButton(
-                              onPressed: () {
-                                setState(() {
-                                  isAsync = false;
-                                });
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        editForm(address: widget.address),
+                          Material(
+                            elevation: 20,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: kButton,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              alignment: FractionalOffset.center,
+                              width: MediaQuery.of(context).size.width / 2.5,
+                              height: 40,
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isAsync = false;
+                                  });
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          editForm(address: widget.address),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Confirm Address",
+                                  style: TextStyle(
+                                    color: kButtonText,
+                                    fontSize: 15,
                                   ),
-                                );
-                              },
-                              child: Text(
-                                "Confirm Address",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
                                 ),
                               ),
                             ),
-                          )
+                          ),
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     if (_distanceinmeters != null)
                       Text(
@@ -225,9 +229,12 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold),
                       ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     if (state == AppState.unsuccessful)
                       Text(
-                        "The Distance between the address extracted from OCR and the address otained from GPS is more than 300 metres. Reset and scan again",
+                        "The Distance between the address extracted from OCR and the address otained from GPS is more than 900 metres. Reset and scan again",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.red,
@@ -239,20 +246,17 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                         "Location verified using GPS. Now you can confirm the address and proceed",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.red,
+                            color: Color(0xff333333),
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold),
                       ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 3.75,
+                      height: MediaQuery.of(context).size.height / 20,
                     ),
                     Image(
                       image: AssetImage('images/Progress2.png'),
                       width: MediaQuery.of(context).size.width * 0.67,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 12,
-                    )
                   ],
                 ),
               ),
@@ -263,10 +267,3 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
     );
   }
 }
-
-//TODO: Improve UI
-//Show OCR Result with scanned address and cropped document image
-//Verify extracted location with GPS location in a limit of 300m
-//Show Error on wrong location verification
-//User will be given a countdown of 1 min to press confirm or reset
-//If user confirms store scanned image in storage and update the ongoing document step, timestamp, pincode and scanned_address field

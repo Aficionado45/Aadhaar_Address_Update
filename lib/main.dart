@@ -1,5 +1,6 @@
 import 'package:aadhaar_address/screens/biometric.dart';
 import 'package:aadhaar_address/screens/recipt.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/welcome.dart';
@@ -47,6 +48,8 @@ class _MyAppState extends State<MyApp> {
         'recipt': (context) => recipt(),
         'biometric': (context) => biometric(),
       },
+      theme: ThemeData(
+          dividerTheme: DividerThemeData(color: kButton, thickness: 2)),
     );
   }
 }

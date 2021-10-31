@@ -63,7 +63,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(10),
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

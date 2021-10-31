@@ -74,7 +74,7 @@ class _editFormState extends State<editForm> {
             IconButton(
               icon: Icon(
                 Icons.help_outline_rounded,
-                color: Color(0xFF143B40),
+                color: Color(0xFF333333),
                 size: 30,
               ),
               onPressed: () {
@@ -139,7 +139,7 @@ class _editFormState extends State<editForm> {
                         //fillColor: Colors.green
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    SizedBox(height: 20.0),
                     TextFormField(
                       controller: pinfield,
                       readOnly: !editable,
@@ -176,46 +176,50 @@ class _editFormState extends State<editForm> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: kButton,
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          alignment: FractionalOffset.center,
-                          width: MediaQuery.of(context).size.width / 2.5,
-                          height: 40,
-                          child: FlatButton(
-                            onPressed: () async {
-                              setState(() {
-                                isAsync = true;
-                              });
-                              //comparing editable form address with location
-                              try{
-                                _distanceinmeters =
-                                await getlocation(addressfield.text);
-                                //comparing ocr address with location
-                                _distanceinmeters2 =
-                                await getlocation(widget.address);
-                              }
-                              catch(err){
-                                print(err);
-                              }
+                        Material(
+                          elevation: 20,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: kButton,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            alignment: FractionalOffset.center,
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            height: 40,
+                            child: FlatButton(
+                              onPressed: () async {
+                                setState(() {
+                                  isAsync = true;
+                                });
+                                //comparing editable form address with location
+                                try {
+                                  _distanceinmeters =
+                                      await getlocation(addressfield.text);
+                                  //comparing ocr address with location
+                                  _distanceinmeters2 =
+                                      await getlocation(widget.address);
+                                } catch (err) {
+                                  print(err);
+                                }
 
-                              print(_distanceinmeters);
-                              setState(() {
-                                state = _distanceinmeters > 1000 &&
-                                        _distanceinmeters2 > 1000
-                                    ? AppState.unsuccessful
-                                    : AppState.comparedlocation;
-                                editable = false;
-                                isAsync = false;
-                              });
-                            },
-                            child: Text(
-                              "Get GPS Location",
-                              style: TextStyle(
-                                color: kButtonText,
-                                fontSize: 15,
+                                print(_distanceinmeters);
+                                setState(() {
+                                  state = _distanceinmeters > 1000 &&
+                                          _distanceinmeters2 > 1000
+                                      ? AppState.unsuccessful
+                                      : AppState.comparedlocation;
+                                  editable = false;
+                                  isAsync = false;
+                                });
+                              },
+                              child: Text(
+                                "Get GPS Location",
+                                style: TextStyle(
+                                  color: kButtonText,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
@@ -253,9 +257,9 @@ class _editFormState extends State<editForm> {
                       ],
                     ),
                     if (state == AppState.comparedlocation)
-                    SizedBox(
-                      height: 10,
-                    ),
+                      SizedBox(
+                        height: 10,
+                      ),
                     if (state == AppState.comparedlocation)
                       Container(
                         decoration: BoxDecoration(
@@ -282,9 +286,9 @@ class _editFormState extends State<editForm> {
                         ),
                       ),
                     if (state == AppState.comparedlocation)
-                    SizedBox(
-                      height: 10,
-                    ),
+                      SizedBox(
+                        height: 10,
+                      ),
                     if (_distanceinmeters != null)
                       Text(
                         "Discrepancy: $_distanceinmeters meters",
@@ -308,15 +312,15 @@ class _editFormState extends State<editForm> {
                         textAlign: TextAlign.center,
                       ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 6,
+                      height: MediaQuery.of(context).size.height / 5,
                     ),
-                    Image(
-                      image: AssetImage('images/Progress2.png'),
-                      width: MediaQuery.of(context).size.width * 0.67,
+                    Padding(
+                      padding: EdgeInsets.all(25),
+                      child: Image(
+                        image: AssetImage('images/Progress2.png'),
+                        width: MediaQuery.of(context).size.width * 0.67,
+                      ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 12,
-                    )
                   ],
                 ),
               ),

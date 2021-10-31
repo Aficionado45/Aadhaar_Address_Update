@@ -536,7 +536,7 @@ class _captureState extends State<capture> {
               child: const Text('Regenerate Captcha'),
               onPressed: () {
                 Navigator.of(context).pop();
-                getaadhaarwidget("oprator");
+                getaadhaarwidget(type);
               },
             ),
             TextButton(

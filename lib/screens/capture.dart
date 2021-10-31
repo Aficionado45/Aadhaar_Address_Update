@@ -1,5 +1,6 @@
 import 'package:aadhaar_address/screens/scan.dart';
 import 'package:aadhaar_address/screens/user_login.dart';
+import 'package:aadhaar_address/utils/constans.dart';
 import 'package:aadhaar_address/utils/feedback_form.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -100,12 +101,18 @@ class _captureState extends State<capture> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                Text(
-                  "Capture User and Operator Images",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Open Sans'),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 7.5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Capture User and Operator Images",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontFamily: "Open Sans",
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -120,14 +127,15 @@ class _captureState extends State<capture> {
                                 width: MediaQuery.of(context).size.width / 3,
                                 height: MediaQuery.of(context).size.height / 4,
                                 child: Image(
-                                  image: FileImage(
+                                    image: FileImage(
                                     userImage,
-                                  ),
+                                    ),
                                 ),
-                              )
+                            )
                             : Icon(
                                 Icons.person_outline_rounded,
-                                size: MediaQuery.of(context).size.height / 6,
+                                color: kButton,
+                                size: MediaQuery.of(context).size.height / 4,
                               ),
                         Text(
                           'User',
@@ -139,7 +147,12 @@ class _captureState extends State<capture> {
                           height: 5.0,
                         ),
                         Container(
-                          child: IconButton(
+                          child: userUploaded ? Icon(
+                            Icons.check,
+                            color: Colors.green,
+                            size: MediaQuery.of(context).size.height / 16,
+                          )
+                          : IconButton(
                             onPressed: () async {
                               setState(() {
                                 isAsync = true;
@@ -156,7 +169,7 @@ class _captureState extends State<capture> {
                             },
                             icon: Icon(
                               Icons.camera_alt_rounded,
-                              color: Color(0xFF143B40),
+                              color: kButton,
                             ),
                             iconSize: MediaQuery.of(context).size.height / 16,
                           ),
@@ -177,7 +190,7 @@ class _captureState extends State<capture> {
                               )
                             : Icon(
                                 Icons.person_outline_rounded,
-                                size: MediaQuery.of(context).size.height / 6,
+                                size: MediaQuery.of(context).size.height / 4,
                               ),
                         Text(
                           'Operator',
@@ -189,7 +202,12 @@ class _captureState extends State<capture> {
                           height: 5.0,
                         ),
                         Container(
-                          child: IconButton(
+                          child: operatorUploaded ? Icon(
+                            Icons.check,
+                            color: Colors.green,
+                            size: MediaQuery.of(context).size.height / 16,
+                          ) :
+                          IconButton(
                             onPressed: () async {
                               setState(() {
                                 isAsync = true;
@@ -206,7 +224,7 @@ class _captureState extends State<capture> {
                             },
                             icon: Icon(
                               Icons.camera_alt_rounded,
-                              color: Color(0xFF143B40),
+                              color: kButton,
                             ),
                             iconSize: MediaQuery.of(context).size.height / 16,
                           ),
@@ -223,7 +241,7 @@ class _captureState extends State<capture> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF143B40),
+                        color: kButton,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       alignment: FractionalOffset.center,
@@ -241,7 +259,7 @@ class _captureState extends State<capture> {
                         child: Text(
                           "Reset",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kButtonText,
                             fontSize: 15,
                           ),
                         ),
@@ -252,7 +270,7 @@ class _captureState extends State<capture> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF143B40),
+                        color: kButton,
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                       alignment: FractionalOffset.center,
@@ -286,7 +304,7 @@ class _captureState extends State<capture> {
                         child: Text(
                           "Next",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kButtonText,
                             fontSize: 15,
                           ),
                         ),
@@ -302,6 +320,7 @@ class _captureState extends State<capture> {
                       fontFamily: 'Open Sans',
                       fontWeight: FontWeight.bold),
                 ),
+                SizedBox(height: 10,),
                 Image(
                   image: AssetImage('images/Progress3.png'),
                   width: MediaQuery.of(context).size.width * 0.67,

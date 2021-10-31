@@ -257,8 +257,7 @@ class _captureState extends State<capture> {
                             error = false;
                             isAsync = false;
                           });
-                          Navigator.pushReplacementNamed(
-                              context, 'confirmation');
+                          Navigator.pushNamed(context, 'confirmation');
                         },
                         child: Text(
                           "Reset",

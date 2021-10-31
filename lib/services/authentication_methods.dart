@@ -31,6 +31,10 @@ Future<Map<String, dynamic>> getotp(
     "captchaValue": captcha,
     "transactionId": "MYAADHAAR:${uuidno}"
   };
+  print(uuidno);
+  print(aadharno);
+  print(captcha);
+  print(captchatxnid);
   var myUri = Uri.parse(
       "https://stage1.uidai.gov.in/unifiedAppAuthService/api/v2/generate/aadhaar/otp");
   var response = await http.post(myUri, body: json.encode(params), headers: {
@@ -62,4 +66,21 @@ Future<bool> validateOTP(String aadharno, String otp, String txnid) async {
   } else {
     return false;
   }
+}
+
+Future<Map<String,dynamic>> getKYC(String aadharno, String otp, String txnid) async {
+  final Map<String, dynamic> params = {
+    'txnId': txnid,
+    'otp': otp,
+    'uid': aadharno
+  };
+  print(aadharno);
+  print(otp);
+  print(txnid);
+  var myUri = Uri.parse('https://stage1.uidai.gov.in/onlineekyc/getEkyc/');
+  var response = await http.post(myUri,
+      body: json.encode(params), headers: {'Content-Type': 'application/json'});
+  Map<String, dynamic> responsebody = json.decode(response.body);
+  print(responsebody);
+  return json.decode(response.body);
 }

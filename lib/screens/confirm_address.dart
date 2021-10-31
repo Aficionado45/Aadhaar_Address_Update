@@ -68,10 +68,15 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Document Extracted Address", style: kHeaderStyle),
-                    Text(
-                      "Confirm With Current GPS Location",
-                      style: kHeaderStyle,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                        child: Text(
+                            "Confirm Address With Current GPS Location",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontFamily: "Open Sans",
+                              fontWeight: FontWeight.w600),
+                        ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 15,
@@ -86,9 +91,22 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                         setState(() {});
                       },
                       decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(25.0),
-                          borderSide: new BorderSide(),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButton),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kButtonText),
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        filled: true,
+                        focusColor: kButtonText,
+                        labelText: 'Updated Address',
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Open Sans',
+                          fontSize: 15,
                         ),
                         //fillColor: Colors.green
                       ),
@@ -101,7 +119,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF143B40),
+                            color: kButton,
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           alignment: FractionalOffset.center,
@@ -118,7 +136,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                             child: Text(
                               "Scan Again",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: kButtonText,
                                 fontSize: 15,
                               ),
                             ),
@@ -130,7 +148,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                         if (state == AppState.free)
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xFF143B40),
+                              color: kButton,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
                             ),
@@ -146,7 +164,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                                     await getlocation(widget.address);
                                 print(_distanceinmeters);
                                 setState(() {
-                                  state = _distanceinmeters > 900
+                                  state = _distanceinmeters > 1000
                                       ? AppState.unsuccessful
                                       : AppState.comparedlocation;
                                   isAsync = false;
@@ -155,7 +173,7 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                               child: Text(
                                 "Get Location",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: kButtonText,
                                   fontSize: 15,
                                 ),
                               ),
@@ -202,19 +220,31 @@ class _cnfrmAddressState extends State<cnfrmAddress> {
                       Text(
                         "Discrepancy: $_distanceinmeters meters",
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
                       ),
                     if (state == AppState.unsuccessful)
                       Text(
                         "The Distance between the address extracted from OCR and the address otained from GPS is more than 300 metres. Reset and scan again",
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
                       ),
                     if (state == AppState.comparedlocation)
                       Text(
                         "Location verified using GPS. Now you can confirm the address and proceed",
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold),
                       ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 3.5,
+                      height: MediaQuery.of(context).size.height / 3.75,
                     ),
                     Image(
                       image: AssetImage('images/Progress2.png'),

@@ -117,49 +117,58 @@ class _userOTPState extends State<userOTP> {
                       focusBorderColor: Color(0xffe06f00)),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: kButton,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                alignment: FractionalOffset.center,
-                width: MediaQuery.of(context).size.width / 3.0,
-                height: 40,
-                child: FlatButton(
-                  onPressed: () async {
-                    print(widget.step);
-                    if (otp != null) {
-                      setState(() {
-                        error = false;
-                        isAsync = true;
-                      });
-                      bool isValidated =
-                          await validateOTP(widget.aadharno, otp, widget.txnid);
-                      if (isValidated) {
+              Material(
+                elevation: 20,
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kButton,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  alignment: FractionalOffset.center,
+                  width: MediaQuery.of(context).size.width / 3.0,
+                  height: 40,
+                  child: FlatButton(
+                    onPressed: () async {
+                      print(widget.step);
+                      if (otp != null) {
                         setState(() {
-                          isAsync = false;
+                          error = false;
+                          isAsync = true;
                         });
-                        switch (widget.step) {
-                          case 0:
-                            Navigator.pushNamed(context, 'scan');
-                            break;
-                          case 1:
-                            Navigator.pushNamed(context, 'scan');
-                            break;
-                          case 2:
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    editForm(address: address),
-                              ),
-                            );
-                            break;
-                          case 3:
-                            Navigator.pushNamed(context, 'capture');
-                            break;
-                          case 4:
-                            Navigator.pushNamed(context, 'confirm');
+                        bool isValidated = await validateOTP(
+                            widget.aadharno, otp, widget.txnid);
+                        if (isValidated) {
+                          setState(() {
+                            isAsync = false;
+                          });
+                          switch (widget.step) {
+                            case 0:
+                              Navigator.pushNamed(context, 'scan');
+                              break;
+                            case 1:
+                              Navigator.pushNamed(context, 'scan');
+                              break;
+                            case 2:
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      editForm(address: address),
+                                ),
+                              );
+                              break;
+                            case 3:
+                              Navigator.pushNamed(context, 'capture');
+                              break;
+                            case 4:
+                              Navigator.pushNamed(context, 'confirm');
+                          }
+                        } else {
+                          setState(() {
+                            error = true;
+                            isAsync = false;
+                          });
                         }
                       } else {
                         setState(() {
@@ -167,20 +176,15 @@ class _userOTPState extends State<userOTP> {
                           isAsync = false;
                         });
                       }
-                    } else {
-                      setState(() {
-                        error = true;
-                        isAsync = false;
-                      });
-                    }
-                  },
-                  child: Text(
-                    "Enter OTP",
-                    style: TextStyle(
-                        color: kButtonText,
-                        fontSize: MediaQuery.of(context).size.width / 30,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold),
+                    },
+                    child: Text(
+                      "Enter OTP",
+                      style: TextStyle(
+                          color: kButtonText,
+                          fontSize: MediaQuery.of(context).size.width / 30,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),

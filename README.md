@@ -76,7 +76,5 @@ git clone https://github.com/Aficionado45/Aadhaar_Address_Update.git
 
 | Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS | Image Capture | Receipt |
 |:--------------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-|![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|![Face Authentication Screenshot]![WhatsApp Image 2021-11-13 at 4 16 35 PM](https://user-images.githubusercontent.com/61295782/143779083-414d2421-17a0-4fc7-8d33-899e7d438b4d.jpeg)
-|![Receipt Screenshot](https://i.ibb.co/T0K9mf8/Whats-App-Image-2021-11-28-at-10-54-09-PM.jpg)|
-
+|![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|
 ---

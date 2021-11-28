@@ -101,6 +101,14 @@ class _captureState extends State<capture> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Image(
+                    image: AssetImage('images/Progress3.png'),
+                    width: MediaQuery.of(context).size.width * 0.67,
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height / 30),
+                Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.of(context).size.width / 10),
                   child: Align(
@@ -322,16 +330,6 @@ class _captureState extends State<capture> {
                       color: error ? Colors.red : Colors.white,
                       fontFamily: 'Open Sans',
                       fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(25),
-                  child: Image(
-                    image: AssetImage('images/Progress3.png'),
-                    width: MediaQuery.of(context).size.width * 0.67,
-                  ),
                 ),
               ],
             ),

@@ -443,16 +443,16 @@ class _confirmState extends State<confirm> {
                                   var bytes = utf8.encode(op_aadhar);
                                   var digest = sha1.convert(bytes);
                                   opRef = digest.toString();
-                                  opRef = opRefId.substring(0, 10);
+                                  opRef = opRef.substring(0, 10);
                                   print("Operator Ref ID: $opRef");
                                   print("Operator Ref ID: $opRefId");
                                 }
-                                if (op_aadhar != null &&
-                                    op_aadhar.length == 12) {
-                                  var bytes = utf8.encode(op_aadhar);
+                                if (user_aadhar != null &&
+                                    user_aadhar.length == 12) {
+                                  var bytes = utf8.encode(user_aadhar);
                                   var digest = sha1.convert(bytes);
                                   userRef = digest.toString();
-                                  userRef = userRefId.substring(0, 10);
+                                  userRef = userRef.substring(0, 10);
                                   print("User Ref ID: $userRef");
                                   print("User Ref ID: $userRefId");
                                 }

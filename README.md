@@ -8,9 +8,7 @@ This is the Github repository submission of our team for the UIDAI Hackathon 202
 ---
 ### Necessary Links 🔗
 
-1. [Presentation](https://docs.google.com/presentation/d/1pbj7PJoXaf8V2HbSzpB7fbIjrGMlS4OX/edit?usp=sharing&ouid=102939839878852438516&rtpof=true&sd=true)
-2. [Video Demonstration](https://drive.google.com/file/d/12_gIwxe1ld9pmA-zihbe2y2TJ7oPRL0G/view?usp=sharing)
-3. [APK of App](https://drive.google.com/file/d/12_gIwxe1ld9pmA-zihbe2y2TJ7oPRL0G/view?usp=sharing)
+1. [Presentation/Demonstration](https://drive.google.com/drive/folders/1_tZZ7tbVm0qgQgyItn1vBBni0Lyu6U-H?usp=sharing)
 ---
 
 ### Team Name: cbxkznoia96

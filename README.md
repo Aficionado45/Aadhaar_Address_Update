@@ -74,7 +74,7 @@ git clone https://github.com/Aficionado45/Aadhaar_Address_Update.git
 
 ### Screenshots of Important Screens 📸
 
-| Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS | Image Capture | Receipt |
+| Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS |
 |:--------------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 |![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|
 ---

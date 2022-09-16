@@ -41,40 +41,17 @@ An Aadhaar Address App for mobile operators who move door-to-door to assist resi
 |![Android Studio Logo](https://techcrunch.com/wp-content/uploads/2017/02/android-studio-logo.png?w=730&crop=1)|![Flutter Logo](https://repository-images.githubusercontent.com/31792824/fb7e5700-6ccc-11e9-83fe-f602e1e1a9f1)|![Firebase Logo](https://www.technisys.com/wp-content/uploads/2021/06/firebase_logo-1.png)|
 
 ---
+### App Workflow / Architecure
+![Untitled Workspace](https://user-images.githubusercontent.com/61295782/190618318-97495dea-caae-4fcd-a2fc-081950c819d7.png)
 
-### Installation and Setup Guidelines to Run the App on Debug Mode 📥
-
-> The given guidelines is for Windows Operating System
-
-> If you wish to run the app normally, download APK of the app from the links given above, and run on an Android device.
-
-1. Download the Flutter SDK (and other prerequisites):
-   [Get Started - Flutter](https://flutter.dev/docs/get-started/install/windows)
-
-2. Add path for Flutter in environment paths.
-
-3. Check dependencies and resolve them by running the following code in Command Prompt:
-```
-flutter doctor
-```
-
-4. Install Android Studio: [Installation - Android Studio](https://developer.android.com/studio)
-
-5. OR Alternatively Install Visual Studio Code: [Installation - Visual Studio Code](https://code.visualstudio.com/Download)
-
-6. Install Flutter and Dart Plugin in your code editor.
-
-7. Clone this repository using the following command:
-```
-git clone https://github.com/Aficionado45/Aadhaar_Address_Update.git
-```
-
-8. Run the app.
 ---
 
-### Screenshots of Important Screens 📸
-
-| Resident Login | Scan Documents | Edit Address Form | Confirm Address and Verify GPS |
+### Screens Screenshots  📸
+| Welcome Screen | Resident Login | OTP Authentication | Scan Documents |
 |:--------------:|:-------:|:-------:|:-------:|
-|![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|
+|![WhatsApp Image 2021-10-31 at 7 14 30 PM (1)](https://user-images.githubusercontent.com/61295782/190618891-2cee1e45-821d-4fe1-95ed-a61e68c042b4.jpeg)|![Resident Login Screenshot](https://i.ibb.co/GFHRCZ5/Screenshot-20211031-184201.jpg)|![WhatsApp Image 2021-10-31 at 7 14 31 PM](https://user-images.githubusercontent.com/61295782/190618962-72286da0-f66f-4f17-9e42-968667168530.jpeg)|![Scan Documents Screenshot](https://i.ibb.co/zhLxdnW/Screenshot-20211031-184449-01-01.jpg)|
+
+| Confirm Address and Verify GPS | Edit Address Form | Face Capture | Recipt Generation|
+|:--------------:|:-------:|:-------:|:-------:|
+|![Confirm Address and Verify GPS Screenshot](https://i.ibb.co/9mDPtFr/Screenshot-20211031-184604-01-01.jpg)|![Edit Address Form Screenshot](https://i.ibb.co/WvfN1sv/Screenshot-20211031-184618-01.jpg)|![WhatsApp Image 2021-11-13 at 4 16 35 PM](https://user-images.githubusercontent.com/61295782/190619175-c4480dce-43d8-4106-8ef0-9b37700dfb20.jpeg)|![WhatsApp Image 2021-11-28 at 10 54 09 PM](https://user-images.githubusercontent.com/61295782/190619195-ce6aec71-4207-4f39-b97f-1ce4db70d208.jpeg)|
 ---
